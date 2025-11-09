@@ -1,0 +1,49 @@
+.footer-main {
+    position: relative;
+    background-color: #141727;
+    color: white;
+    padding: 50px;
+    overflow: hidden; /* Taşan görüntüyü gizler */
+}
+
+.footer-main::before {
+    content: "";
+    position: absolute;
+    bottom: -70px;
+    left: -100px;
+    width: 800px;  /* resmin boyutu */
+    height: 800px;
+    background: url(../img/footer/background.png) no-repeat left bottom;
+    background-size: contain;
+    opacity: 0.15; /* görünürlüğünü düşürür */
+    filter: brightness(0.5);
+    pointer-events: none; /* tıklanabilirliği engellemez */
+}
+
+
+.footer_baslik {
+    font-size: 40px;
+}
+
+.footer_logoyer {
+    font-weight: bolder;
+    margin-top: 40px;
+}
+
+.baslik_footer_link {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.footer_ul {
+    list-style-type: none;
+}
+
+.footer_link {
+    margin-bottom: 10px;
+}
+
+.footer_link a {
+    color: white;
+    text-decoration: none;
+}

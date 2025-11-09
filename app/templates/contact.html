@@ -1,0 +1,292 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>İletişim - Ovasan Mühendislik</title>
+{% endblock head %}
+
+{% block body_ortak %}
+<style>
+        .ortak {
+            background-image: url(../static/img/contact/header_background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .contact_baslik1 {
+            font-weight: bolder;
+            font-size: 64px;
+        }
+
+        .contact_header {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+            color: white;
+        }
+
+        .baslikContact {
+            font-size: 40px;
+        }
+
+        .iletisimBilgiContact {
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .iletisimBilgiContact2 {
+            font-size: 16px;
+        }
+
+        .col_contact {
+            padding: 40px;
+        } 
+
+        .bi {
+            color: red;
+        }
+
+
+        /* Form */
+
+    .contact-form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .contact-form-label {
+      font-weight: 500;
+    }
+
+    .contact-form-input,
+    .contact-form-select,
+    .contact-form-textarea {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-form-input:focus,
+    .contact-form-select:focus,
+    .contact-form-textarea:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .contact-form-button {
+      border-radius: 6px;
+      padding: 8px 24px;
+    }
+
+    .contact-form-row {
+      margin-bottom: 15px;
+    }
+</style>
+
+<div class="container-fluid contact_header">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <div class="row" style="margin-top: 100px;">
+                    <div class="col-sm">
+                        <h1 class="contact_baslik1">Bize Ulaşın</h1>
+                        <span> Lorem <span style="color: red;">⏺ Lorem
+                                ipsum</span> </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <br><br><br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body_ortak %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm" style="margin-top: -200px;">
+            <br><br>
+            <div style="width: 100%; height: 400px;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.645890240979!2d32.85404817577794!3d39.925533171529204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f3c4d8b5a45%3A0x7f3a8cf25a21b8e!2sAnkara!5e0!3m2!1str!2str!4v1731018000000!5m2!1str!2str"
+                    width="100%"
+                    height="100%"
+                    style="border:0; border-radius: 30px;"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <br><br><br><br>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm" style="background-color: #fef1f1;">
+            <div class="col_contact">
+                <h2 class="baslikContact">İletişim Bilgileri</h2>
+                <br><br>
+                <span class="iletisimBilgiContact">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    olore magna aliqua. Ut enim ad minim veniam, quis
+                </span>
+                <br><br>
+                <span class="iletisimBilgiContact2">
+                    If you are seeking support please visit our <a href
+                        style="color: red; text-decoration: none;"> Support <br>
+                        portal </a> before reaching out directly.
+                </span>
+                <br><br><br>
+
+                <div>
+                    <span> <i class="bi bi-telephone"></i> <span> +
+                            0123-456-7890 </span></span>
+                    <br><br>
+                </div>
+                <div>
+                    <span> <i class="bi bi-envelope"></i> <span>
+                            hello@geekui.com </span></span>
+                    <br><br>
+                </div>
+                <div>
+                    <span> <i class="bi bi-geo-alt"></i> <span> 2652 Kooter Lane
+                            Charlotte, NC 28263</span></span>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm" style="background-color: #f3f8ff;">
+            <div class="col_contact">
+                <h2 class="baslikContact">Fiyat Alın</h2>
+                <br><br>
+
+                <form method="POST" enctype="multipart/form-data"
+                    class="contact-form-container" id="contactForm">
+
+                    <!-- Kurum Adı - Ad Soyad -->
+                    <div class="row contact-form-row">
+                        <div class="col-md-6">
+                            <label for="kurum_name_input"
+                                class="contact-form-label form-label">Kurum
+                                Adı</label>
+                            <input type="text"
+                                class="form-control contact-form-input"
+                                id="kurum_name_input" name="kurum_name"
+                                placeholder="Kurum adınızı girin" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="full_name_input"
+                                class="contact-form-label form-label">Adınız
+                                Soyadınız</label>
+                            <input type="text"
+                                class="form-control contact-form-input"
+                                id="full_name_input" name="name"
+                                placeholder="Ad Soyad" required>
+                        </div>
+                    </div>
+
+                    <!-- Telefon - Mail -->
+                    <div class="row contact-form-row">
+                        <div class="col-md-6">
+                            <label for="phone_input"
+                                class="contact-form-label form-label">Telefon
+                                Numaranız</label>
+                            <input type="tel"
+                                class="form-control contact-form-input"
+                                id="phone_input" name="phone"
+                                placeholder="05xx xxx xx xx" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="email_input"
+                                class="contact-form-label form-label">Mail
+                                Adresiniz</label>
+                            <input type="email"
+                                class="form-control contact-form-input"
+                                id="email_input" name="email"
+                                placeholder="ornek@mail.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Hizmet Seçimi -->
+                    <div class="mb-3 contact-form-row">
+                        <label for="service_select"
+                            class="contact-form-label form-label">Hizmet
+                            Seçimi</label>
+                        <select class="form-select contact-form-select"
+                            id="service_select" name="service" required>
+                            <option value>Seçiniz...</option>
+                            <option value="web_tasarim">Web Tasarım</option>
+                            <option value="yazilim_gelistirme">Yazılım
+                                Geliştirme</option>
+                            <option value="sistem_danismanligi">Sistem
+                                Danışmanlığı</option>
+                            <option value="diger">Diğer</option>
+                        </select>
+                    </div>
+
+                    <!-- Mesaj -->
+                    <div class="mb-3 contact-form-row">
+                        <label for="message_textarea"
+                            class="contact-form-label form-label">Mesajınız</label>
+                        <textarea class="form-control contact-form-textarea"
+                            id="message_textarea" name="message" rows="5"
+                            placeholder="Mesajınızı buraya yazın..."
+                            required></textarea>
+                    </div>
+
+                    <!-- Dosya -->
+                    <div class="mb-3 contact-form-row">
+                        <label for="file_input"
+                            class="contact-form-label form-label">Dosya Yükleme
+                            (max 100 MB)</label>
+                        <input type="file"
+                            class="form-control contact-form-input"
+                            id="file_input" name="file"
+                            accept=".zip,.png,.jpg,.jpeg" required>
+                        <small class="text-muted">Yalnızca .zip, .png, .jpg,
+                            .jpeg dosyaları kabul edilir.</small>
+                    </div>
+
+                    <div class="g-recaptcha mb-3"
+                        data-sitekey="6LfkEwYsAAAAAM5XI17sM2N9cxUzPKIdEu4lIl-7"></div>
+
+                    <!-- Gönder Butonu -->
+                    <div class="text-end">
+                        <button type="submit"
+                            class="btn btn-primary contact-form-button"
+                            id="submit_button">Gönder</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CAPTCHA SCRIPTİ -->
+<script src="https://www.google.com/recaptcha/api.js" async
+    defer></script>
+
+<script>
+    // Dosya boyutu kontrolü (100 MB sınırı)
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      const fileInput = document.getElementById('file_input');
+      if (fileInput.files.length > 0 && fileInput.files[0].size > 100 * 1024 * 1024) {
+        alert('Dosya boyutu 100 MB\'ı aşamaz.');
+        event.preventDefault();
+      }
+    });
+  </script>
+
+{% endblock body %}

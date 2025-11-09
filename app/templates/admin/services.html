@@ -1,0 +1,227 @@
+{% extends 'admin/layout.html' %}
+
+{% block head %}
+<title>Hizmetler - Ovasan Mühendislik</title>
+<style>
+    .table-actions button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: #555;
+        transition: 0.2s;
+    }
+    .table-actions button:hover {
+        color: #000;
+        transform: scale(1.1);
+    }
+    .modal-header {
+        background-color: #0d6efd;
+        color: white;
+    }
+    .service-image {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+    }
+    .btn-add {
+        background-color: #0d6efd;
+        color: white;
+        border-radius: 8px;
+        transition: 0.2s;
+    }
+    .btn-add:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-2px);
+    }
+    .id-info {
+        background: #f1f3f5;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+</style>
+{% endblock head %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-0">Hizmetler</h2>
+        <p class="text-muted mb-0">Mevcut hizmetlerinizi buradan yönetebilir,
+            yeni hizmet ekleyebilir veya düzenleyebilirsiniz.</p>
+    </div>
+    <button class="btn btn-add" data-bs-toggle="modal"
+        data-bs-target="#addServiceModal">
+        <i class="bi bi-plus-circle me-2"></i>Yeni Hizmet Ekle
+    </button>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-header">Hizmet Listesi</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table align-middle table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Görsel</th>
+                        <th>Başlık</th>
+                        <th>Slug</th>
+                        <th>Kategori ID</th>
+                        <th>Oluşturulma</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if datas == [] %}
+
+                    {% else %}
+                    {% for data in datas %}
+                    <tr>
+                        <td>{{data.id}}</td>
+                        <td><img src="../static/uploads/services/{{data.image}}"
+                                class="service-image" alt="Hizmet"></td>
+                        <td>{{data.title}}</td>
+                        <td>{{data.slug}}</td>
+                        <td>{{data.category_id}}</td>
+                        <td> {{data.created_at}} </td>
+                        <td class="table-actions">
+                            <form method="post" action="/admin/services/delete"
+                                style="display:inline;">
+                                <input type="hidden" name="service_id"
+                                    value="{{data.id}}">
+                                <button type="submit" title="Sil" class="btn"
+                                    onclick="return confirm('Bu hizmeti silmek istediğinize emin misiniz?');">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Yeni Hizmet Ekle</h5>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addServiceForm" enctype="multipart/form-data"
+                    method="post" action="/admin/services/create">
+
+                    <!-- HİZMET BİLGİLERİ -->
+                    <h6 class="fw-bold mb-3">Hizmet Bilgileri</h6>
+                    <div class="mb-3">
+                        <label class="form-label">Hizmet Başlığı</label>
+                        <input type="text" class="form-control" name="title"
+                            placeholder="Hizmet başlığı" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Slug</label>
+                        <input type="text" class="form-control" name="slug"
+                            placeholder="slug" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Kategori</label>
+                        <select class="form-select" name="category_id" required>
+                            <option value disabled selected>-- Kategori Seçin
+                                --</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name
+                                }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- BAĞIMSIZ METİNLER -->
+                    <h6 class="fw-bold mt-4 mb-3">Bağımsız Metinler</h6>
+                    <div class="mb-3">
+                        <label class="form-label">Bağımsız Metin 1</label>
+                        <textarea class="form-control" name="text1" rows="3"
+                            placeholder="Bağımsız metin 1"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Bağımsız Metin 2</label>
+                        <textarea class="form-control" name="text2" rows="3"
+                            placeholder="Bağımsız metin 2"></textarea>
+                    </div>
+
+                    <!-- ANA BAŞLIK VE METNİ -->
+                    <h6 class="fw-bold mt-4 mb-3">Ana Başlık ve Metin</h6>
+                    <div class="mb-3">
+                        <label class="form-label">Ana Başlık</label>
+                        <input type="text" class="form-control"
+                            name="main_heading" placeholder="Ana başlık">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Ana Başlık Metni</label>
+                        <textarea class="form-control" name="text3" rows="3"
+                            placeholder="Ana başlık metni"></textarea>
+                    </div>
+
+                    <!-- ALT BAŞLIKLAR VE METİNLER -->
+                    <h6 class="fw-bold mt-4 mb-3">Alt Başlıklar ve
+                        Metinleri</h6>
+                    <div class="mb-3">
+                        <label class="form-label">Alt Başlık 1</label>
+                        <input type="text" class="form-control mb-2"
+                            name="subtitle1" placeholder="Alt başlık 1">
+                        <textarea class="form-control" name="text4" rows="3"
+                            placeholder="Alt başlık 1 metni"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Alt Başlık 2</label>
+                        <input type="text" class="form-control mb-2"
+                            name="subtitle2" placeholder="Alt başlık 2">
+                        <textarea class="form-control" name="text5" rows="3"
+                            placeholder="Alt başlık 2 metni"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Alt Başlık 3</label>
+                        <input type="text" class="form-control mb-2"
+                            name="subtitle3" placeholder="Alt başlık 3">
+                        <textarea class="form-control" name="text6" rows="3"
+                            placeholder="Alt başlık 3 metni"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Alt Başlık 4</label>
+                        <input type="text" class="form-control mb-2"
+                            name="subtitle4" placeholder="Alt başlık 4">
+                        <textarea class="form-control" name="text7" rows="3"
+                            placeholder="Alt başlık 4 metni"></textarea>
+                    </div>
+
+                    <!-- GÖRSEL -->
+                    <div class="mb-4">
+                        <label class="form-label">Hizmet Görseli</label>
+                        <input type="file" class="form-control" name="image"
+                            accept="image/*">
+                    </div>
+
+                    <button type="submit"
+                        class="btn btn-add w-100">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,145 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>Ovasan Mühendislik</title>
+{% endblock head %}
+
+{% block body_ortak %}
+
+<style>
+.navbar {
+    background-color: rgba(0, 0, 0, 0) !important; /* koyu saydam siyah */
+}
+
+.blur_bck {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* Ortak div ayarları */
+.ortak {
+    width: 100%;
+    height: 85vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out; /* Geçişli arka plan */
+    position: relative;
+}
+
+/* Slider içindeki img'leri gizle, kontroller ve göstergeler aktif kalsın */
+#homeSlider .carousel-item img {
+    display: none;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: white;
+}
+</style>
+
+<!-- Slider Başlangıcı (Görseller .ortak arka planında gösterilecek) -->
+<div id="homeSlider" class="carousel slide carousel-fade"
+    data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img
+                src="{{ url_for('static', filename='img/sliders/slider1.png') }}"
+                alt="Slider 1">
+        </div>
+        <div class="carousel-item">
+            <img
+                src="{{ url_for('static', filename='img/sliders/slider2.png') }}"
+                alt="Slider 2">
+        </div>
+        <div class="carousel-item">
+            <img
+                src="{{ url_for('static', filename='img/sliders/slider3.png') }}"
+                alt="Slider 3">
+        </div>
+        <div class="carousel-item">
+            <img
+                src="{{ url_for('static', filename='img/sliders/slider4.png') }}"
+                alt="Slider 4">
+        </div>
+        <div class="carousel-item">
+            <img
+                src="{{ url_for('static', filename='img/sliders/slider5.png') }}"
+                alt="Slider 5">
+        </div>
+    </div>
+
+    <!-- Kontroller -->
+    <button class="carousel-control-prev" type="button"
+        data-bs-target="#homeSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Önceki</span>
+    </button>
+    <button class="carousel-control-next" type="button"
+        data-bs-target="#homeSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Sonraki</span>
+    </button>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- Göstergeler -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#homeSlider" data-bs-slide-to="0"
+            class="active"></button>
+        <button type="button" data-bs-target="#homeSlider"
+            data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#homeSlider"
+            data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#homeSlider"
+            data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#homeSlider"
+            data-bs-slide-to="4"></button>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector('#homeSlider');
+    const ortakDiv = document.querySelector('.ortak');
+
+    if (!slider || !ortakDiv) return;
+
+    // Bootstrap Carousel başlat
+    const carousel = new bootstrap.Carousel(slider, {
+        interval: 6000,  // 6 saniye
+        ride: 'carousel' // otomatik geçişi başlat
+    });
+
+    // İlk aktif resmi uygula
+    const firstImg = slider.querySelector('.carousel-item.active img');
+    if (firstImg) {
+        ortakDiv.style.backgroundImage = `url(${firstImg.src})`;
+    }
+
+    // Slider geçişlerinde arka planı değiştir (geçişli)
+    slider.addEventListener('slid.bs.carousel', function(e) {
+        const activeImg = e.relatedTarget.querySelector('img');
+        if (activeImg) {
+            ortakDiv.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url(${activeImg.src})`;
+        }
+    });
+});
+</script>
+
+{% endblock body_ortak %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm" style="background-color: #F1F4FA;">
+            <br><br><br><br>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,134 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title> {{data.title}} - Ovasan Mühendislik </title>
+{% endblock head %}
+
+{% block body_ortak %}
+<style>
+    .ortak {
+    background-image: url(../../static/img/main/service_background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    
+        .bck_blck {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+            color: white;
+        }
+
+
+</style>
+
+<div class="container-fluid bck_blck">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <br><br><br><br><br><br>
+                        <h1 style="font-size: 64px; font-weight: bolder;">
+                            {{data.title}} </h1>
+                        <br>
+                        <div class="breadcrumb">
+                            <a href="/"
+                                style="margin-right: 5px; text-decoration: none;">Anasayfa</a>
+                            <span style="margin-right: 5px;">&gt;</span>
+                            <a href="/hizmetler"
+                                style="margin-right: 5px; text-decoration: none;">Hizmet</a>
+                            <span style="margin-right: 5px;">&gt;</span>
+                            <a href="/hizmetler/{{service_category}}"
+                                style="margin-right: 5px; text-decoration: none;">Hizmet
+                                Kategorisi</a> <span
+                                style="margin-right: 5px;">&gt;</span>
+                            <span> {{data.title}} </span>
+                        </div>
+                        <br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body_ortak %}
+
+{% block body %}
+<br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h5 style="font-weight: bolder; font-size: 36px;">Diğer Hizmet
+                Kategorileri</h5>
+            <br>
+            <div class="list-group" style="border-radius: 30px;">
+                <a href="#"
+                    class="list-group-item list-group-item-action"
+                    style="background-color: red; color: white; font-weight: bolder;">
+                    Cras justo odio
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action">Dapibus ac
+                    facilisis in</a>
+                <a href="#" class="list-group-item list-group-item-action">Morbi
+                    leo risus</a>
+                <a href="#" class="list-group-item list-group-item-action">Porta
+                    ac consectetur ac</a>
+            </div>
+            <br><br>
+        </div>
+        <div class="col-sm-8">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm">
+                        <img src="../../static/uploads/services/{{data.image}}"
+                            alt
+                            class="img-fluid" style="border-radius: 50px;">
+
+                        <br><br>
+
+                        <p> {{data.text1}} </p>
+
+                        <p> {{data.text2}} </p>
+
+                        <br><br><br>
+
+                        <h2 style="font-size: 50px;">
+                            {{data.main_heading}}
+                        </h2>
+
+                        <p> {{data.text3}} </p>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 60px;">
+                    <div class="col-sm">
+                        <h4 style="font-weight: bolder;"> {{data.subtitle1}}
+                        </h4>
+                        <p>{{data.text4}} </p>
+                        <br>
+                    </div>
+                    <div class="col-sm">
+                        <h4 style="font-weight: bolder;">{{data.subtitle2}}</h4>
+                        <p>{{data.text5}} </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <br>
+                        <h4 style="font-weight: bolder;">{{data.subtitle3}}</h4>
+                        <p>{{data.text6}}</p>
+                    </div>
+                    <div class="col-sm">
+                        <br>
+                        <h4 style="font-weight: bolder;">{{data.subtitle4}}</h4>
+                        <p>{{data.text7}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br>
+{% endblock body %}

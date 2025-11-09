@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title> Projeler - Ovasan Mühendislik </title>
+{% endblock head %}
+
+{% block body_ortak %}
+<style>
+        .ortak {
+            background-image: url(../static/img/main/service_background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .bck_blck {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+            color: white;
+        }
+    </style>
+
+<div class="container-fluid bck_blck">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm text-center">
+                        <br><br><br><br><br>
+                        <h1 style="font-size: 50px;">
+                            Lorem ipsum sit amem
+                            <br><span style="font-weight: bolder;">Lorem ispum
+                                dit amem</span>
+                        </h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt
+                            <br>
+                            ut uiLorem ipsumdolor sit amet,consectetur
+                            adipiscing elit, sed do
+                            <br>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt u</p>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body_ortak %}
+
+{% block body %}
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    .card-title {
+        color: #444; /* Daha yumuşak bir ton */
+    }
+</style>
+
+<br><br>
+<div class="container">
+    <div class="row g-4">
+        {% if datas == [] %}
+        <p class="text-center w-100">Henüz kategori bulunmamaktadır.</p>
+        {% else %}
+        {% for data in datas %}
+        <div class="col-md-6">
+            <a href="/hizmetler/{{data.slug}}" class="text-decoration-none">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top"
+                        src="../static/uploads/categories/{{data.image}}"
+                        alt="{{data.title}}"
+                        style="height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold"
+                            style="font-size: 1.25rem;">{{data.name}}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock body %}

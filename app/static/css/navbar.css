@@ -1,0 +1,57 @@
+.navbar {
+    background-color: rgba(0, 0, 0, 0.6) !important; /* koyu saydam siyah */
+}
+
+.blur_bck {
+ background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.iletisim_yazi {
+    color: whitesmoke;
+    font-size: 12px;
+}
+
+/* Tüm nav linkleri beyaz */
+.navbar .nav-link {
+    color: rgb(255, 255, 255) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-item {
+    font-size: 18px;
+    margin: 10px;
+}
+
+/* Üzerine gelindiğinde #EA110C */
+.navbar .nav-link:hover {
+    color: #EA110C !important;
+}
+
+/* Dropdown menü beyaz yazı + hover rengi */
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: none;
+}
+.dropdown-item {
+    color: white !important;
+    transition: color 0.3s ease;
+}
+.dropdown-item:hover {
+    color: #EA110C !important;
+    background-color: transparent !important;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+/* FİYAT ALIN butonu */
+.fiyat-al {
+    background-color: #EA110C;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}

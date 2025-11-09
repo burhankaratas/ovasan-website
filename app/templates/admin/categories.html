@@ -1,0 +1,239 @@
+{% extends 'admin/layout.html' %}
+
+{% block head %}
+<title>Hizmet Kategorileri - Ovasan Mühendislik</title>
+<style>
+    .table-actions button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: #555;
+        transition: 0.2s;
+    }
+
+    .table-actions button:hover {
+        color: #000;
+        transform: scale(1.1);
+    }
+
+    .modal-header {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .category-image {
+        width: 55px;
+        height: 55px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .card-header {
+        background-color: #f8f9fa;
+        font-weight: 600;
+    }
+
+    .btn-add {
+        background-color: #0d6efd;
+        color: white;
+        border-radius: 8px;
+        transition: 0.2s;
+    }
+
+    .btn-add:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-2px);
+    }
+
+    .id-info {
+        background: #f1f3f5;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+</style>
+{% endblock head %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-0">Hizmet ve Proje Kategorileri</h2>
+        <p class="text-muted mb-0">Mevcut hizmet ve proje kategorilerini buradan
+            yönetin,
+            yeni kategori ekleyin veya düzenleyin.</p>
+    </div>
+    <button class="btn btn-add" data-bs-toggle="modal"
+        data-bs-target="#addCategoryModal">
+        <i class="bi bi-plus-circle me-2"></i>Yeni Kategori Ekle
+    </button>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-header">Kategori Listesi</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table align-middle table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Görsel</th>
+                        <th>Kategori Adı</th>
+                        <th>Slug</th>
+                        <th>Tür</th>
+                        <th>Oluşturulma</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if datas == [] %}
+
+                    {% else %}
+                    {% for data in datas %}
+                    <tr>
+                        <td> {{data.id}} </td>
+                        <td><img
+                                src="../static/uploads/categories/{{data.image}}"
+                                class="category-image" alt="Kategori"></td>
+                        <td> {{data.name}} </td>
+                        <td> {{data.slug}} </td>
+                        <td><span class="badge bg-primary">
+                                {{data.category_type}} </span></td>
+                        <td>2025-11-09</td>
+                        <td class="table-actions">
+                            <button
+                                title="Düzenle"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editCategoryModal"
+                                data-id="{{data.id}}"
+                                data-name="{{data.name}}"
+                                data-slug="{{data.slug}}"
+                                data-type="{{data.category_type}}">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <form method="post"
+                                action="/admin/categories/delete"
+                                style="display:inline;">
+                                <input type="hidden" name="category_id"
+                                    value="{{data.id}}">
+                                <button type="submit" title="Sil" class="btn"
+                                    onclick="return confirm('Bu kategoriyi silmek istediğinize emin misiniz?');">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Yeni Kategori Modal -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Yeni Kategori Ekle</h5>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addCategoryForm" method="post"
+                    action="/admin/categories/create"
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">Kategori Adı</label>
+                        <input type="text" class="form-control"
+                            placeholder="Örn: Endüstriyel Sistemler"
+                            name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Slug</label>
+                        <input type="text" class="form-control"
+                            placeholder="endustriyel-sistemler" name="slug">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tür</label>
+                        <select class="form-select" name="category_type">
+                            <option value="service">Service</option>
+                            <option value="project">Project</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Kategori Görseli</label>
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                    <button type="submit"
+                        class="btn btn-add w-100">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Düzenleme Modal -->
+<div class="modal fade" id="editCategoryModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kategoriyi Düzenle</h5>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span class="id-info" id="categoryIdInfo"></span>
+                <form id="editCategoryForm" method="post"
+                    action="/admin/categories/edit">
+                    <input type="hidden" id="editCategoryId" name="category_id">
+                    <div class="mb-3">
+                        <label class="form-label">Kategori Adı</label>
+                        <input type="text" id="editCategoryName"
+                            class="form-control" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Slug</label>
+                        <input type="text" id="editCategorySlug"
+                            class="form-control" name="slug">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tür</label>
+                        <select id="editCategoryType" class="form-select"
+                            name="category_type">
+                            <option value="service">Service</option>
+                            <option value="project">Project</option>
+                        </select>
+                    </div>
+                    <button type="submit"
+                        class="btn btn-add w-100">Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+// Modal dolumu
+const editModal = document.getElementById('editCategoryModal');
+editModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+    const id = button.getAttribute('data-id');
+    const name = button.getAttribute('data-name');
+    const slug = button.getAttribute('data-slug');
+    const type = button.getAttribute('data-type');
+
+    document.getElementById('editCategoryId').value = id;
+    document.getElementById('categoryIdInfo').textContent = "Kategori ID: " + id;
+    document.getElementById('editCategoryName').value = name;
+    document.getElementById('editCategorySlug').value = slug;
+    document.getElementById('editCategoryType').value = type;
+});
+</script>
+{% endblock body %}

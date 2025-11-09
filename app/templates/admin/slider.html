@@ -1,0 +1,42 @@
+{% extends 'admin/layout.html' %}
+{% block head %}
+<title>Slider Yönetimi</title>
+{% endblock head %}
+
+{% block body %}
+<h2>Slider Görsellerini Güncelle</h2>
+<p>1–5 arası slider numarasını girerek o görseli güncelleyebilirsiniz.</p>
+
+<form method="post" enctype="multipart/form-data" class="card p-4 mt-3"
+    style="max-width: 500px;">
+    <div class="mb-3">
+        <label for="slider_number" class="form-label">Slider Numarası
+            (1–5)</label>
+        <input type="number" name="slider_number" id="slider_number"
+            class="form-control" min="1" max="5" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="file" class="form-label">Yeni Görsel</label>
+        <input type="file" name="file" id="file" class="form-control"
+            accept="image/*" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Görseli Güncelle</button>
+</form>
+
+<hr>
+
+<h4 class="mt-4">Mevcut Görseller</h4>
+<div class="row">
+    {% for i in range(1,6) %}
+    <div class="col-md-2 text-center">
+        <p>Slider {{ i }}</p>
+        <img
+            src="{{ url_for('static', filename='img/sliders/slider' ~ i ~ '.png') }}"
+            alt="Slider {{ i }}" class="img-fluid rounded mb-2"
+            style="border:1px solid #ccc;">
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

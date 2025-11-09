@@ -1,0 +1,16 @@
+<div style="position: fixed; bottom: 80px; right: 20px; z-index: 1000;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="d-flex flex-column-reverse">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show mb-2"
+            role="alert" style="max-width: 300px;">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+</div>

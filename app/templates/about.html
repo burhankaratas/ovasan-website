@@ -1,0 +1,197 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>Hakkımızda - Ovasan Mühendislik</title>
+{% endblock head %}
+
+{% block body_ortak %}
+
+<style>
+    .ortak {
+    background-image: url(../static/img/navbar/slide1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+    .about_baslik {
+        color: white;
+        margin-top: 200px;
+        font-weight: bolder;
+        font-size: 60px;
+    }
+
+    .about_aciklama {
+        color: white;
+        font-size: 20px;
+    }
+
+    .bck_blck {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .baslik1_about {
+        font-size: 70px;
+    }
+
+.aboutheader_button {
+    padding: 10px 60px !important;
+    font-size: 20px 
+}
+
+
+    /* About Box */
+
+    .about_box {
+        background-color: #d6d6d680;
+        border-radius: 30px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    .about_box_metin {
+        font-weight:600;
+        font-size: 24px;
+    }
+
+    .about_box_sayi {
+        font-size: 44px;
+        font-weight: bolder;
+    }
+
+    .about_box_arti {
+        color: #3686F7;
+    }
+
+
+    .baslik2_about {
+        font-size: 45px;
+        font-weight: bolder;
+    }
+
+</style>
+
+<div class="container-fluid bck_blck">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm" style="text-align: center;">
+                        <h1 class="about_baslik">LOREM IPSUM DOLOR</h1>
+                        <span class="about_aciklama">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut ui</span>
+                        <br><br>
+                        <button class="btn btn-primary aboutheader_button">LOREM
+                            IPSUM</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body_ortak %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row" style="margin-bottom: 100px;">
+        <div class="col-sm">
+            <br><br>
+            <div style="text-align: center;">
+                <h2 class="baslik1_about"> Lorem <span
+                        style="color: red;">Dolor</span> ıpsum <br> sit amem
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <br>
+            <div class="about_box">
+                <span class="about_box_metin">
+                    lOREM IPSUM SIT
+                    AMEM MİNUM DOLOR
+                </span>
+                <br><br>
+                <span class="about_box_sayi">
+                    3500<span class="about_box_arti">+</span>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm">
+            <br>
+            <div class="about_box">
+                <span class="about_box_metin">
+                    lOREM IPSUM SIT
+                    AMEM MİNUM DOLOR
+                </span>
+                <br><br>
+                <span class="about_box_sayi">
+                    3500<span class="about_box_arti">+</span>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm">
+            <br>
+            <div class="about_box">
+                <span class="about_box_metin">
+                    lOREM IPSUM SIT
+                    AMEM MİNUM DOLOR
+                </span>
+                <br><br>
+                <span class="about_box_sayi">
+                    3500<span class="about_box_arti">%</span>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm">
+            <br>
+            <div class="about_box">
+                <span class="about_box_metin">
+                    lOREM IPSUM SIT
+                    AMEM MİNUM DOLOR
+                </span>
+                <br><br>
+                <span class="about_box_sayi">
+                    3500<span class="about_box_arti">%</span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 150px;">
+        <div class="col-sm">
+            <br>
+            <img src="../static/img/about/about_img1.png" alt="img1 about"
+                class="img-fluid">
+        </div>
+        <div class="col-sm">
+            <br><br><br>
+            <h2 class="baslik2_about">Lorem ipsum dolor <br>
+                sit amet</h2>
+
+            <br>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna al</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna alLorem
+                do eiusmod tempor incididunt ut labore et dolore magn
+                do eiusmod tempor incididunt ut labore et dolore magna
+                do eiusmod tempor incididunt ut labore et dolore magna al</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna al</p>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+{% endblock body %}
