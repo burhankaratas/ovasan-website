@@ -68,6 +68,10 @@ def project_categories():
 
     return render_template("project_categories.html", datas = msgordatas)
 
+@main.route("/projects")
+def projects():
+    return render_template("projects.html")
+
 @main.route("/contact", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":

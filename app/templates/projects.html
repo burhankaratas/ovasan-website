@@ -1,0 +1,212 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>Projeler - Ovasan Mühendislik</title>
+{% endblock head %}
+
+{% block body_ortak %}
+<style>
+    .ortak {
+        background-image: url(../static/img/main/service_background2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bck_blck {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+        color: white;
+    }
+
+    .projects-hero {
+        padding: 90px 0 40px 0;
+    }
+
+    .projects-title {
+        font-size: 48px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    .projects-subtitle {
+        font-size: 16px;
+        color: rgba(255,255,255,0.8);
+        margin-top: 12px;
+    }
+
+    .project-feature-list {
+        margin-top: 28px;
+    }
+
+    .project-feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: rgba(0,0,0,0.35);
+        margin-bottom: 12px;
+    }
+
+    .project-feature-item.is-active {
+        background: #d82b2b;
+    }
+
+    .project-feature-no {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1;
+        color: #ff4b4b;
+    }
+
+    .project-feature-item.is-active .project-feature-no {
+        color: #ffffff;
+    }
+
+    .project-feature-title {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0 0 4px 0;
+    }
+
+    .project-feature-text {
+        font-size: 13px;
+        margin: 0;
+        color: rgba(255,255,255,0.8);
+    }
+
+    .project-media {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 10px;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    }
+
+    .project-media img {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+        border-radius: 14px;
+    }
+
+    .project-media-caption {
+        margin-top: 12px;
+        text-align: center;
+        color: #222;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .projects-info {
+        background: #0f1421;
+        color: #d7dbe5;
+        padding: 70px 0 60px 0;
+    }
+
+    .projects-info h3 {
+        color: #ffffff;
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+    .projects-info p {
+        font-size: 14px;
+        color: rgba(255,255,255,0.75);
+    }
+
+    .projects-badge {
+        width: 60px;
+        height: 60px;
+        border-radius: 999px;
+        background: #d82b2b;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+    }
+</style>
+
+<div class="bck_blck">
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    
+</div>
+{% endblock body_ortak %}
+
+{% block body %}
+
+<div class="container-fluid" style="margin-top: -400px;">
+    <div class="container projects-hero">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="text-uppercase" style="letter-spacing: 2px; font-size: 12px; color: rgba(255,255,255,0.7);">
+                    Ovasan Mühendislik
+                </div>
+                <div class="projects-title mt-2">Projelerimiz</div>
+                <div class="projects-subtitle">
+                    Endustriyel tesislerden altyapi projelerine kadar,
+                    ihtiyaca ozel tasarlanan guvenilir muhendislik cozumleri.
+                </div>
+
+                <div class="project-feature-list">
+                    <div class="project-feature-item">
+                        <div class="project-feature-no">01</div>
+                        <div>
+                            <div class="project-feature-title">Kesif ve Analiz</div>
+                            <p class="project-feature-text">
+                                Sahaya ozel ihtiyac analizi ve uygulanabilir proje tasarimi.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project-feature-item is-active">
+                        <div class="project-feature-no">02</div>
+                        <div>
+                            <div class="project-feature-title">Uygulama ve Montaj</div>
+                            <p class="project-feature-text">
+                                Proje disiplini ve is guvenligi ile planli saha uygulamasi.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project-feature-item">
+                        <div class="project-feature-no">03</div>
+                        <div>
+                            <div class="project-feature-title">Test ve Devreye Alma</div>
+                            <p class="project-feature-text">
+                                Performans, guvenlik ve kalite testleriyle teslim sureci.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project-feature-item">
+                        <div class="project-feature-no">04</div>
+                        <div>
+                            <div class="project-feature-title">Bakim ve Destek</div>
+                            <p class="project-feature-text">
+                                Surekliligi koruyan periyodik bakim ve teknik destek.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project-feature-item">
+                        <div class="project-feature-no">05</div>
+                        <div>
+                            <div class="project-feature-title">Kalite ve Mevzuat</div>
+                            <p class="project-feature-text">
+                                Standartlara uygunluk ve dokumantasyon yonetimi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <div class="project-media">
+                    <img src="../static/img/main/service_robot.jpg" alt="Ovasan projeler">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
