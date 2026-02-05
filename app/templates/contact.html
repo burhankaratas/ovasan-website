@@ -2,6 +2,12 @@
 
 {% block head %}
 <title>İletişim - Ovasan Mühendislik</title>
+<meta name="description" content="Ovasan Mühendislik ile iletişime geçin. Teklif ve bilgi talepleriniz için iletişim formunu doldurun.">
+<meta name="keywords" content="Ovasan Mühendislik, iletişim, teklif, fiyat alın, form">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="İletişim - Ovasan Mühendislik">
+<meta property="og:description" content="Teklif ve bilgi talepleri için iletişim formu.">
+<meta property="og:type" content="website">
 {% endblock head %}
 
 {% block body_ortak %}
@@ -199,7 +205,7 @@
                             <label for="phone_input"
                                 class="contact-form-label form-label">Telefon
                                 Numaranız</label>
-                            <input type="tel"
+                            <input type="number"
                                 class="form-control contact-form-input"
                                 id="phone_input" name="phone"
                                 placeholder="05xx xxx xx xx" required>
@@ -251,9 +257,9 @@
                         <input type="file"
                             class="form-control contact-form-input"
                             id="file_input" name="file"
-                            accept=".zip,.png,.jpg,.jpeg" required>
-                        <small class="text-muted">Yalnızca .zip, .png, .jpg,
-                            .jpeg dosyaları kabul edilir.</small>
+                            accept=".pdf,.xls,.xlsx,.zip,.jpg,.jpeg">
+                        <small class="text-muted">Yalnızca .pdf, .xls, .xlsx,
+                            .zip, .jpg, .jpeg dosyaları kabul edilir.</small>
                     </div>
 
                     <div class="g-recaptcha mb-3"
@@ -278,11 +284,27 @@
     defer></script>
 
 <script>
-    // Dosya boyutu kontrolü (100 MB sınırı)
+    // Dosya boyutu ve tip kontrolü (100 MB sınırı)
     document.getElementById('contactForm').addEventListener('submit', function(event) {
       const fileInput = document.getElementById('file_input');
-      if (fileInput.files.length > 0 && fileInput.files[0].size > 100 * 1024 * 1024) {
+      if (fileInput.files.length === 0) {
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const maxSize = 100 * 1024 * 1024;
+      const allowedExtensions = ['pdf', 'xls', 'xlsx', 'zip', 'jpg', 'jpeg'];
+      const fileNameParts = file.name.split('.');
+      const extension = fileNameParts.length > 1 ? fileNameParts.pop().toLowerCase() : '';
+
+      if (file.size > maxSize) {
         alert('Dosya boyutu 100 MB\'ı aşamaz.');
+        event.preventDefault();
+        return;
+      }
+
+      if (!allowedExtensions.includes(extension)) {
+        alert('Geçersiz dosya türü. Yalnızca PDF, Excel, ZIP ve JPG dosyaları kabul edilir.');
         event.preventDefault();
       }
     });

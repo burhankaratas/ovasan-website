@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, flash, session, redirect, url_for
+from flask import Blueprint, render_template, flash, session, redirect, url_for, request
 
 from app.models.admin_model import Categories, Services
-from app.utils.auth import login_required
+from app.utils.auth import login_required, verify_recaptcha
 
 main = Blueprint('main', __name__)
 
@@ -68,6 +68,33 @@ def project_categories():
 
     return render_template("project_categories.html", datas = msgordatas)
 
-@main.route("/contact")
+@main.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        token = request.form.get("g-recaptcha-response")
+        status, _message = verify_recaptcha(token)
+        if not status:
+            flash("Recaptcha doğrulaması başarısız.", "danger")
+            return redirect(url_for("main.contact"))
+
+        form_data = {
+            "kurum_name": request.form.get("kurum_name", "").strip(),
+            "name": request.form.get("name", "").strip(),
+            "phone": request.form.get("phone", "").strip(),
+            "email": request.form.get("email", "").strip(),
+            "service": request.form.get("service", "").strip(),
+            "message": request.form.get("message", "").strip(),
+        }
+        uploaded_file = request.files.get("file")
+
+        try:
+            from app.utils.mail import send_mail
+        except Exception:
+            send_mail = None
+
+        if send_mail and send_mail(form_data, uploaded_file):
+            flash("Mesajınız başarıyla gönderildi.", "success")
+        else:
+            flash("Mesajınız gönderilemedi. Lütfen tekrar deneyin.", "danger")
+        return redirect(url_for("main.contact"))
     return render_template("contact.html")
