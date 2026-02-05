@@ -152,7 +152,7 @@
     <br><br>
         <div class="slider-overlay">
         <div class="slider-text">
-            <br><br><br>
+            <br><br><br><br><br><br><br><br>
             <div class="slider-text-line">ENDÜSTRİYEL MÜHENDİSLİK ÇÖZÜMLERİ</div>
             <br>
             <div><h1 style="font-size: 55px;">Ovasan Mühendislik</h1></div>
@@ -430,6 +430,28 @@ kurumsal ihtiyaçlara uygun hizmetler sunuyoruz.</span>
     </div>
 </div>
 
+<section class="home-feature">
+    <div class="container">
+        <div class="feature-card">
+            <div class="feature-label">
+                <i class="bi bi-activity"></i> UZMANLIK ALANLARIMIZ
+            </div>
+            <h3 class="feature-title">Endüstriyel projelerde güçlü çözüm ortağı</h3>
+            <p class="feature-text">
+                Ovasan Mühendislik, keşif, projelendirme ve saha uygulamalarında
+                kurumunuza özel, güvenilir ve sürdürülebilir çözümler üretir.
+            </p>
+            <ul class="feature-list">
+                <li>Proje tasarımı ve uygulama planlama</li>
+                <li>Kurulum, test ve devreye alma</li>
+                <li>Mevzuata uygun dokümantasyon</li>
+                <li>Periyodik bakım ve teknik destek</li>
+            </ul>
+            <a href="/contact" class="feature-btn">TEKLİF AL</a>
+        </div>
+    </div>
+</section>
+
 <br><br><br><br><br><br><br><br><br><br>
 
 <style>
@@ -597,6 +619,89 @@ kurumsal ihtiyaçlara uygun hizmetler sunuyoruz.</span>
     padding: 0 20px; 
 }
 
+.home-feature {
+    background-image: url(../static/img/index/image3.jpg);
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: right 160px center;
+    background-size: 48% auto;
+    padding: 60px 0;
+    margin-top: 100px;
+}
+
+.feature-card {
+    max-width: 560px;
+    background: #ffffff;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+.feature-label {
+    color: #e60000;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.feature-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #24323a;
+    margin-bottom: 16px;
+}
+
+.feature-text {
+    color: #2f3c45;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px 0;
+}
+
+.feature-list li {
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 10px;
+    color: #2f3c45;
+    font-size: 14px;
+}
+
+.feature-list li::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border: 2px solid #2a74ff;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 6px;
+}
+
+.feature-btn {
+    display: inline-block;
+    background: #e60000;
+    color: #ffffff;
+    padding: 12px 28px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.feature-btn:hover {
+    color: #ffffff;
+    background: #c80000;
+}
+
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
@@ -625,6 +730,10 @@ kurumsal ihtiyaçlara uygun hizmetler sunuyoruz.</span>
 @media (max-width: 992px) {
     .card {
         height: 500px;
+    }
+
+    .feature-card {
+        max-width: 100%;
     }
 }
 
