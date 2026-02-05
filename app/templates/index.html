@@ -40,6 +40,41 @@
 .carousel-indicators [data-bs-target] {
     background-color: white;
 }
+
+#homeSlider {
+    position: relative;
+    height: 85vh;
+}
+
+#homeSlider .carousel-inner,
+#homeSlider .carousel-item {
+    height: 100%;
+}
+
+.slider-overlay {
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.slider-text {
+    color: #ffffff;
+    padding: 0 6vw;
+    max-width: 720px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.slider-text-line {
+    font-family: "Spartan", "League Spartan", "Open Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 17.5px;
+    line-height: 24.5px;
+    letter-spacing: 0;
+    vertical-align: middle;
+}
 </style>
 
 <!-- Slider Başlangıcı (Görseller .ortak arka planında gösterilecek) -->
@@ -48,7 +83,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img
-                src="{{ url_for('static', filename='img/sliders/slider1.png') }}"
+                src="{{ url_for('static', filename='img/sliders/slider3.png') }}"
                 alt="Slider 1">
         </div>
         <div class="carousel-item">
@@ -73,6 +108,18 @@
         </div>
     </div>
 
+    <br><br>
+        <div class="slider-overlay">
+        <div class="slider-text">
+            <br><br><br>
+            <div class="slider-text-line">lOREM IPSUM SIT AMEM MİNUM DOLOR</div>
+            <br>
+            <div><h1 style="font-size: 55px;">LOREM IPSUM DOLOR</h1></div>
+            <br><br>
+            <span style="font-size: 17px; font-weight: 400;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ui</span>
+        </div>
+    </div>
+
     <!-- Kontroller -->
     <button class="carousel-control-prev" type="button"
         data-bs-target="#homeSlider" data-bs-slide="prev">
@@ -84,8 +131,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Sonraki</span>
     </button>
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!-- Göstergeler -->
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#homeSlider" data-bs-slide-to="0"
@@ -117,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // İlk aktif resmi uygula
     const firstImg = slider.querySelector('.carousel-item.active img');
     if (firstImg) {
-        ortakDiv.style.backgroundImage = `url(${firstImg.src})`;
+        ortakDiv.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url(${firstImg.src})`;
     }
 
     // Slider geçişlerinde arka planı değiştir (geçişli)
@@ -138,8 +183,505 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="row">
         <div class="col-sm" style="background-color: #F1F4FA;">
             <br><br><br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="box_index">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <i class="bi bi-emoji-smile box_bi"></i>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="box_number">546</span>
+                                        <br><br>
+                                        <span class="box_text">Lorem, ipsum.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-sm">
+                        <div class="box_index">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <i class="bi bi-emoji-smile box_bi"></i>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="box_number">546</span>
+                                        <br><br>
+                                        <span class="box_text">Lorem, ipsum.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-sm">
+                        <div class="box_index">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <i class="bi bi-emoji-smile box_bi"></i>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="box_number">546</span>
+                                        <br><br>
+                                        <span class="box_text">Lorem, ipsum.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-sm">
+                        <div class="box_index">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <i class="bi bi-emoji-smile box_bi"></i>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="box_number">546</span>
+                                        <br><br>
+                                        <span class="box_text">Lorem, ipsum.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <br><br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h1 style="font-weight: bolder; font-size: 28px;">
+                            Voluptatem dignissimos provident laboris nisi
+                            ut aliquip ex ea commodo
+                        </h1>
+
+                        <br>
+                        
+                        <img src="../static/img/index/image1.jpg" alt="Resim 1" class="img-fluid">
+
+                        <br><br>
+
+                        <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat
+debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur
+consectetur fugiat voluptas ea.</p>
+
+                        <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae
+quo officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui.
+Ut ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium
+sed ut omnis beatae neque deleniti repellendus.</p>
+                    </div>
+                    <div class="col-sm">
+                        <p style="color: #A1A1A1;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.
+                        </p>
+
+                        <br>
+
+                        <ul style="list-style-type: none;">
+                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
+                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
+                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat
+nulla pariatur. </li>
+                        </ul>
+
+                        <br>
+
+                        <p>
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident
+                        </p>
+
+                        <img src="../static/img/index/image2.jpg" alt="resim 2" class="img-fluid">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 100px;">
+                    <div class="col-sm">
+                        <span style="font-size: 14px; color: #44444480;">PROJELERİMİZ</span>
+                        <h2 style="font-size: 36px; font-weight: bolder;">LOREM İPSUM</h2>
+
+                        <br><br>
+
+<section class="project-section">
+    <div class="carousel-container">
+        <button class="prev-btn" aria-label="Önceki Proje">&lt;</button>
+
+        <div class="carousel-track-container">
+            <div class="carousel-track">
+
+    <div class="card">
+        <div class="card-background"  style="background-image: url(../static/img/index/testproje.jpg);"></div>
+
+        <div class="card-content-wrapper">
+            <div class="card-logo">
+                <img src="../static/img/index/logo_projects.png" alt="Proje Logosu">
+            </div>
+
+            <div class="card-text">
+                <h2 class="card-title">IOREM IPSUM</h2>
+                <p class="card-description">
+                    Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-background" style="background-image: url(../static/img/index/image1.jpg);"></div>
+
+        <div class="card-content-wrapper">
+            <div class="card-logo">
+                <img src="../static/img/index/logo_projects.png" alt="Proje Logosu">
+            </div>
+
+            <div class="card-text">
+                <h2 class="card-title">IOREM IPSUM</h2>
+                <p class="card-description">
+                    Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-background"  style="background-image: url(../static/img/index/image2.jpg);"></div>
+
+        <div class="card-content-wrapper">
+            <div class="card-logo">
+                <img src="../static/img/index/logo_projects.png" alt="Proje Logosu">
+            </div>
+
+            <div class="card-text">
+                <h2 class="card-title">IOREM IPSaaUM</h2>
+                <p class="card-description">
+                    Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.
+                </p>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <button class="next-btn" aria-label="Sonraki Proje">&gt;</button>
+    </div>
+</section>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+<div class="container">
+    <div class="row" style="margin-top: 80px;">
+        <div class="col-sm">
+            <i class="bi bi-gear" style="color: red;"></i> 
+            <span style="font-size: 14px; color: #44444480;">HİZMETLER </span>
+            <br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <h2 style="font-size: 50px;"> Lorem Ipsum Dolor <br> <span style="font-weight: bolder;">Amem</span> </h2>
+        </div>
+        <div class="col-sm">
+            <br>
+            <span style="font-weight: 400; font-size: 14px; color: #0F172A;">Ut excepturi voluptatem nisi sed. Quidem fugaconsequatur. Minus ea aut. Vel qui id
+voluptas adipisci eos earum corrupti.</span>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<style>
+    .box_index {
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.box_bi {
+    font-size: 50px;
+    color: red;
+}
+
+.box_number {
+    font-size: 52px;
+    color: #3686F7;
+}
+
+.box_text {
+    font-size: 16px;
+    color: #0F172A;
+}
+
+.li_index {
+    margin-bottom: 10px;
+}
+
+.bi-check2-circle {
+    font-size: 20px;
+}
+
+.project-section {
+    padding: 40px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.header p {
+    color: #a00;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.header h2 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    padding: 0 50px; 
+}
+
+.carousel-track-container {
+    width: 100%;
+    overflow: hidden; 
+}
+
+.carousel-track {
+    display: flex;
+    flex-wrap: nowrap; 
+    width: fit-content; 
+}
+
+.card {
+    position: relative;
+    margin: 0 10px; 
+    width: 350px;
+    max-width: 90vw;
+    height: 400px; 
+    overflow: hidden; 
+    border-radius: 10px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    box-sizing: border-box;
+    flex-shrink: 0;
+    min-width: 320px;
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-bg-2 { background-image: url('https://picsum.photos/600/700?random=2'); }
+.card-bg-3 { background-image: url('https://picsum.photos/600/700?random=3'); }
+
+.card-content-wrapper {
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; 
+    background-color: white;
+    padding: 20px;
+    padding-top: 0; 
+    border-radius: 10px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-logo {
+    position: absolute;
+    top: -40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; 
+    height: 80px;
+    background-color: white; 
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-logo img {
+    width: 60px; 
+    height: 60px;
+    object-fit: contain;
+}
+
+.card-text {
+    text-align: center;
+    padding-top: 50px; 
+    padding-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.card-description {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 20px; 
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+@media (max-width: 992px) {
+    .card {
+        height: 500px;
+    }
+}
+
+/* Mobil Cihazlar İçin Buton Düzenlemesi (767px altı) */
+@media (max-width: 767px) {
+    .card-content-wrapper {
+        width: 250px;
+        left: 160px;
+    }
+
+    .carousel-container {
+        flex-direction: column; 
+        padding: 0 0;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .carousel-track-container {
+        width: 100%;
+        order: 1;
+        margin-bottom: 20px;
+    }
+
+    .prev-btn, .next-btn {
+        transform: none; 
+        display: inline-block;
+        margin: 0 5px; 
+        width: 50px;
+        height: 50px;
+        font-size: 2em;
+
+    }
+    
+    .card {
+        width: calc(100vw - 40px); 
+        min-width: calc(100vw - 40px); 
+        margin: 0 20px;
+    }
+}
+</style>
+
+<script>
+    const carouselTrack = document.getElementsByClassName('carousel-track')[0];
+    let cards = Array.from(document.querySelectorAll('.carousel-track > .card')); 
+    const nextButton = document.querySelector('.next-btn');
+    const prevButton = document.querySelector('.prev-btn');
+
+
+    nextButton.addEventListener('click', function() {
+        direction = "next";
+        scroll_to_direction(direction);
+    });
+
+    prevButton.addEventListener("click", function() {
+        direction = "prev";
+        scroll_to_direction(direction);
+    });
+
+function scroll_to_direction(direction) {
+        if (direction === "next") {
+
+            const firstCard = cards.shift(); 
+        
+            cards.push(firstCard); 
+
+        } else if (direction === "prev") {
+
+            const lastCard = cards.pop(); 
+
+            cards.unshift(lastCard); 
+        }
+
+        carouselTrack.innerHTML = '';
+
+        cards.forEach(card => {
+            carouselTrack.appendChild(card);
+        });
+    }
+</script>
 
 {% endblock body %}
