@@ -61,8 +61,10 @@
 
 .slider-text {
     color: #ffffff;
-    padding: 0 6vw;
-    max-width: 720px;
+    padding: 0 calc(var(--bs-gutter-x, 1.5rem) * .5);
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
@@ -74,6 +76,22 @@
     line-height: 24.5px;
     letter-spacing: 0;
     vertical-align: middle;
+}
+
+@media (min-width: 576px) {
+    .slider-text { max-width: 540px; }
+}
+@media (min-width: 768px) {
+    .slider-text { max-width: 720px; }
+}
+@media (min-width: 992px) {
+    .slider-text { max-width: 960px; }
+}
+@media (min-width: 1200px) {
+    .slider-text { max-width: 1140px; }
+}
+@media (min-width: 1400px) {
+    .slider-text { max-width: 1320px; }
 }
 </style>
 
