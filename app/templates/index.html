@@ -32,6 +32,20 @@
     position: relative;
 }
 
+.ortak::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ortak > * {
+    position: relative;
+    z-index: 2;
+}
+
 /* Slider içindeki img'leri gizle, kontroller ve göstergeler aktif kalsın */
 #homeSlider .carousel-item img {
     display: none;
@@ -84,6 +98,10 @@
     vertical-align: middle;
 }
 
+    .bck_blck {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+
 @media (min-width: 576px) {
     .slider-text { max-width: 540px; }
 }
@@ -101,7 +119,6 @@
 }
 </style>
 
-<!-- Slider Başlangıcı (Görseller .ortak arka planında gösterilecek) -->
 <div id="homeSlider" class="carousel slide carousel-fade"
     data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -136,11 +153,11 @@
         <div class="slider-overlay">
         <div class="slider-text">
             <br><br><br>
-            <div class="slider-text-line">lOREM IPSUM SIT AMEM MİNUM DOLOR</div>
+            <div class="slider-text-line">ENDÜSTRİYEL MÜHENDİSLİK ÇÖZÜMLERİ</div>
             <br>
-            <div><h1 style="font-size: 55px;">LOREM IPSUM DOLOR</h1></div>
+            <div><h1 style="font-size: 55px;">Ovasan Mühendislik</h1></div>
             <br><br>
-            <span style="font-size: 17px; font-weight: 400;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ui</span>
+            <span style="font-size: 17px; font-weight: 400;">Projelendirme, uygulama ve devreye alma süreçlerinde güvenilir ve ölçeklenebilir çözümler sunuyoruz.</span>
         </div>
     </div>
 
@@ -155,19 +172,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Sonraki</span>
     </button>
-    <!-- Göstergeler -->
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#homeSlider" data-bs-slide-to="0"
-            class="active"></button>
-        <button type="button" data-bs-target="#homeSlider"
-            data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#homeSlider"
-            data-bs-slide-to="2"></button>
-        <button type="button" data-bs-target="#homeSlider"
-            data-bs-slide-to="3"></button>
-        <button type="button" data-bs-target="#homeSlider"
-            data-bs-slide-to="4"></button>
-    </div>
 </div>
 
 <script>
@@ -219,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <div class="col-sm">
                                         <span class="box_number">546</span>
                                         <br><br>
-                                        <span class="box_text">Lorem, ipsum.</span>
+                                        <span class="box_text">Tamamlanan Proje</span>
                                     </div>
                                 </div>
                             </div>
@@ -235,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <div class="col-sm">
                                         <span class="box_number">546</span>
                                         <br><br>
-                                        <span class="box_text">Lorem, ipsum.</span>
+                                        <span class="box_text">Aktif Saha İşleri</span>
                                     </div>
                                 </div>
                             </div>
@@ -251,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <div class="col-sm">
                                         <span class="box_number">546</span>
                                         <br><br>
-                                        <span class="box_text">Lorem, ipsum.</span>
+                                        <span class="box_text">Müşteri Memnuniyeti</span>
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <div class="col-sm">
                                         <span class="box_number">546</span>
                                         <br><br>
-                                        <span class="box_text">Lorem, ipsum.</span>
+                                        <span class="box_text">Teknik Destek</span>
                                     </div>
                                 </div>
                             </div>
@@ -289,8 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="row">
                     <div class="col-sm">
                         <h1 style="font-weight: bolder; font-size: 28px;">
-                            Voluptatem dignissimos provident laboris nisi
-                            ut aliquip ex ea commodo
+                            Keşiften teslimata tüm mühendislik sürecini tek elden yönetiyoruz
                         </h1>
 
                         <br>
@@ -299,37 +302,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         <br><br>
 
-                        <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat
-debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur
-consectetur fugiat voluptas ea.</p>
+                        <p>Ovasan Mühendislik, endüstriyel tesisler ve altyapı projelerinde
+projelendirme, saha uygulaması ve devreye alma hizmetleri sunar.</p>
 
-                        <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae
-quo officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui.
-Ut ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium
-sed ut omnis beatae neque deleniti repellendus.</p>
+                        <p>Her projede iş güvenliği, kalite ve zaman yönetimi odaklı çalışır,
+kurumsal müşteriler için uzun ömürlü ve verimli çözümler üretiriz.</p>
                     </div>
                     <div class="col-sm">
                         <p style="color: #A1A1A1;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua.
+                            Teknik kapasite, saha tecrübesi ve doğru planlama ile
+                            projelerinizi güvenle hayata geçiriyoruz.
                         </p>
 
                         <br>
 
                         <ul style="list-style-type: none;">
-                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
-                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
-                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat
-nulla pariatur. </li>
+                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> İhtiyaca özel proje tasarımı ve uygulama planlaması. </li>
+                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> Saha kurulumu, test ve devreye alma süreçleri. </li>
+                            <li class="li_index"><i class="bi bi-check2-circle" style="color: red;"></i> Mevzuata uygun dokümantasyon ve teknik raporlama. </li>
                         </ul>
 
                         <br>
 
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-Excepteur sint occaecat cupidatat non proident
+                            Zamanında teslim, iş güvenliği ve kalite standartları temelinde,
+                            projelerin her aşamasında yanınızdayız.
                         </p>
 
                         <img src="../static/img/index/image2.jpg" alt="resim 2" class="img-fluid">
@@ -338,7 +335,7 @@ Excepteur sint occaecat cupidatat non proident
                 <div class="row" style="margin-top: 100px;">
                     <div class="col-sm">
                         <span style="font-size: 14px; color: #44444480;">PROJELERİMİZ</span>
-                        <h2 style="font-size: 36px; font-weight: bolder;">LOREM İPSUM</h2>
+                        <h2 style="font-size: 36px; font-weight: bolder;">ÖRNEK PROJELER</h2>
 
                         <br><br>
 
@@ -358,9 +355,9 @@ Excepteur sint occaecat cupidatat non proident
             </div>
 
             <div class="card-text">
-                <h2 class="card-title">IOREM IPSUM</h2>
+                <h2 class="card-title">Üretim Hattı İyileştirme</h2>
                 <p class="card-description">
-                    Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.
+                    Üretim akışı analiz edilerek verimlilik ve iş güvenliği artırıldı.
                 </p>
             </div>
         </div>
@@ -375,9 +372,9 @@ Excepteur sint occaecat cupidatat non proident
             </div>
 
             <div class="card-text">
-                <h2 class="card-title">IOREM IPSUM</h2>
+                <h2 class="card-title">Otomasyon Modernizasyonu</h2>
                 <p class="card-description">
-                    Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.
+                    Kontrol sistemleri güncellenerek enerji ve zaman tasarrufu sağlandı.
                 </p>
             </div>
         </div>
@@ -392,9 +389,9 @@ Excepteur sint occaecat cupidatat non proident
             </div>
 
             <div class="card-text">
-                <h2 class="card-title">IOREM IPSaaUM</h2>
+                <h2 class="card-title">Saha Kurulum ve Devreye Alma</h2>
                 <p class="card-description">
-                    Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.
+                    Proje kurulumu, test ve teslim süreçleri koordineli yürütüldü.
                 </p>
             </div>
         </div>
@@ -423,12 +420,12 @@ Excepteur sint occaecat cupidatat non proident
     </div>
     <div class="row">
         <div class="col-sm">
-            <h2 style="font-size: 50px;"> Lorem Ipsum Dolor <br> <span style="font-weight: bolder;">Amem</span> </h2>
+            <h2 style="font-size: 50px;"> Hizmetlerimiz <br> <span style="font-weight: bolder;">Kuruma Özel Çözümler</span> </h2>
         </div>
         <div class="col-sm">
             <br>
-            <span style="font-weight: 400; font-size: 14px; color: #0F172A;">Ut excepturi voluptatem nisi sed. Quidem fugaconsequatur. Minus ea aut. Vel qui id
-voluptas adipisci eos earum corrupti.</span>
+            <span style="font-weight: 400; font-size: 14px; color: #0F172A;">Projelendirme, saha uygulaması, devreye alma ve teknik destek alanlarında
+kurumsal ihtiyaçlara uygun hizmetler sunuyoruz.</span>
         </div>
     </div>
 </div>
