@@ -1,0 +1,29 @@
+{% extends 'admin/layout.html' %}
+
+{% block head %}
+<title>Kariyer Başvuruları - Ovasan Mühendislik</title>
+{% endblock head %}
+
+{% block body %}
+<h2>Kariyer Başvuruları</h2>
+<p>Başvurular aşağıda alt alta listelenir.</p>
+
+<div class="mt-4">
+    {% if applications %}
+    {% for app in applications %}
+    <div class="mb-3">
+        <strong>{{ app.first_name }} {{ app.last_name }}</strong>
+        {% if app.created_date %}<span class="text-muted"> — {{ app.created_date }}</span>{% endif %}
+        <div>Yaş: {{ app.age }}</div>
+        <div>Email: {{ app.email }}</div>
+        <div>Eğitim: {{ app.education }}</div>
+        <div>Alan / Bölüm: {{ app.field }}</div>
+        <div>İlgi Alanları: {{ app.interests }}</div>
+        <hr>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-info">Gösterilecek başvuru yok.</div>
+    {% endif %}
+</div>
+{% endblock body %}

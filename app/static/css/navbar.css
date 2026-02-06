@@ -45,6 +45,17 @@
     color: white;
 }
 
+.navbar-logo {
+    height: 64px;
+    width: auto;
+}
+
+@media (max-width: 576px) {
+    .navbar-logo {
+        height: 52px;
+    }
+}
+
 /* FİYAT ALIN butonu */
 .fiyat-al {
     background-color: #EA110C;

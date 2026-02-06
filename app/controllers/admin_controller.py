@@ -4,7 +4,7 @@ import os
 from app.utils.auth import login_required
 from app.utils.admin import save_file
 
-from app.models.admin_model import Contact, Categories, Services
+from app.models.admin_model import Contact, Categories, Services, CareerApplications
 
 
 admin = Blueprint('admin', __name__, url_prefix="/admin")
@@ -244,3 +244,18 @@ def admin_services_delete():
 @login_required
 def admin_projects():
     return render_template("/admin/projects.html")
+
+@admin.route("/career")
+@login_required
+def admin_career():
+    career_model = CareerApplications()
+
+    status, applications = career_model.get_all()
+    if not status:
+        flash(applications, "danger")
+        return redirect(url_for("admin.admin_index"))
+
+    return render_template(
+        "admin/career.html",
+        applications=applications
+    )

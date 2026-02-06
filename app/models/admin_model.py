@@ -36,53 +36,87 @@ class Contact:
             if cursor:
                 cursor.close()
 
-    def get_all(self, page=1, per_page=5):
-        """
-        Sayfalamalı olarak mesajları listeler.
-        page: kaçıncı sayfa
-        per_page: sayfa başına mesaj sayısı
-        """
+class CareerApplications:
+    """
+    Kariyer başvurularını veritabanına kaydeder ve listeler.
+    """
+
+    def __init__(self):
+        self.db = mysql
+
+    def create(self, first_name, last_name, age, email, education, field, interests):
         cursor = None
         try:
-            offset = (page - 1) * per_page
             cursor = self.db.connection.cursor()
 
-            query = "SELECT * FROM contact ORDER BY created_date DESC LIMIT %s OFFSET %s"
-            cursor.execute(query, (per_page, offset))
+            query = """
+            INSERT INTO career_applications
+            (first_name, last_name, age, email, education, field, interests)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """
+            cursor.execute(query, (
+                first_name,
+                last_name,
+                age,
+                email,
+                education,
+                field,
+                interests
+            ))
 
-            datas = cursor.fetchall()
-            return datas
+            if cursor.rowcount > 0:
+                self.db.connection.commit()
+                return True, "Başvurunuz başarıyla alındı."
+
+            return False, "Başvurunuz alınamadı. Lütfen tekrar deneyiniz."
 
         except Exception as e:
-            save_error(f"Contact.get_all: {str(e)}")
-            return []
+            save_error(f"CareerApplications.create: {str(e)}")
+            return False, "Beklenmedik bir hata ile karşılaşıldı. Lütfen tekrar deneyiniz."
+
+        finally:
+            if cursor:
+                cursor.close()
+
+    def get_all(self):
+        cursor = None
+        try:
+            cursor = self.db.connection.cursor()
+
+            query = "SELECT * FROM career_applications ORDER BY id DESC"
+            result = cursor.execute(query)
+
+            if result > 0:
+                return True, cursor.fetchall()
+
+            return True, []
+
+        except Exception as e:
+            save_error(f"CareerApplications.get_all: {str(e)}")
+            return False, "Beklenmedik bir hata oluştu."
 
         finally:
             if cursor:
                 cursor.close()
 
     def count(self):
-        """
-        Toplam mesaj sayısını döner (sayfalama için kullanılacak).
-        """
         cursor = None
         try:
             cursor = self.db.connection.cursor()
-            query = "SELECT COUNT(*) AS total FROM contact"
+            query = "SELECT COUNT(*) AS total FROM career_applications"
             cursor.execute(query)
             result = cursor.fetchone()
             total = result["total"] if result else 0
             return total
-    
+
         except Exception as e:
-            save_error(f"Contact.count: {str(e)}")
+            save_error(f"CareerApplications.count: {str(e)}")
             return 0
-    
+
         finally:
             if cursor:
                 cursor.close()
-    
-    
+
 class Categories:
     """
     Bu sınıf projeler ve servislerin kategorilerinin eklenmesi, düzenlenmesi 

@@ -37,6 +37,8 @@
 
 .footer_ul {
     list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
 }
 
 .footer_link {

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, flash, session, redirect, url_for, request
 
-from app.models.admin_model import Categories, Services
+from app.models.admin_model import Categories, Services, CareerApplications
 from app.utils.auth import login_required, verify_recaptcha
 
 main = Blueprint('main', __name__)
@@ -114,3 +114,41 @@ def contact():
             flash("Mesajınız gönderilemedi. Lütfen tekrar deneyin.", "danger")
         return redirect(url_for("main.contact"))
     return render_template("contact.html")
+
+@main.route("/kariyer", methods=["GET", "POST"])
+def career():
+    if request.method == "POST":
+        token = request.form.get("g-recaptcha-response")
+        status, _message = verify_recaptcha(token)
+        if not status:
+            flash("Recaptcha doğrulaması başarısız.", "danger")
+            return redirect(url_for("main.career"))
+
+        first_name = request.form.get("first_name", "").strip()
+        last_name = request.form.get("last_name", "").strip()
+        age = request.form.get("age", "").strip()
+        email = request.form.get("email", "").strip()
+        education = request.form.get("education", "").strip()
+        field = request.form.get("field", "").strip()
+        interests = request.form.getlist("interests")
+
+        interest_text = ", ".join([i.strip() for i in interests if i.strip()])
+
+        career_model = CareerApplications()
+        status, message = career_model.create(
+            first_name,
+            last_name,
+            age,
+            email,
+            education,
+            field,
+            interest_text
+        )
+
+        if status:
+            flash(message, "success")
+        else:
+            flash(message, "danger")
+        return redirect(url_for("main.career"))
+
+    return render_template("career.html")

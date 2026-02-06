@@ -53,9 +53,12 @@
       }
 
       .page-loader__logo {
-        width: 200px;
+        width: 320px;
         height: auto;
         animation: loader-pulse 1.2s ease-in-out infinite;
+      }
+      @media (max-width: 576px) {
+        .page-loader__logo { width: 240px; }
       }
 
       @keyframes loader-pulse {
@@ -70,7 +73,7 @@
       <img
         src="{{ url_for('static', filename='img/main/mainlogo.png') }}"
         alt="Ovasan logo"
-        class="page-loader__logo" />
+        class="page-loader__logo img-fluid" />
     </div>
 
     <div class="ortak">
