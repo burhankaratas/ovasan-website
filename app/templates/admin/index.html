@@ -5,13 +5,50 @@
 {% endblock head %}
 
 {% block body %}
-<h2>Hoşgeldiniz Admin</h2>
-<p>Sol menüden sayfaları seçerek yönetim işlemlerini
-  yapabilirsiniz.</p>
-<div class="card mt-4">
-  <div class="card-header">Örnek Panel Kartı</div>
+<h2>Yönetim Paneline Hoşgeldiniz</h2>
+<p>Buradan site içeriğinizi hızlıca yönetebilir, gerekli sayfalara tek tıkla
+  ulaşabilirsiniz.</p>
+
+<div class="row g-4 mt-2">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-header">Hizmetler</div>
+      <div class="card-body">
+        <p>Hizmet içeriklerini ekleyin, düzenleyin ve görsellerini yönetin.</p>
+        <a href="/admin/services" class="btn btn-accent btn-sm">Hizmetleri Yönet</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-header">Kategoriler</div>
+      <div class="card-body">
+        <p>Hizmet ve proje kategorilerini ekleyip güncelleyin.</p>
+        <a href="/admin/categories" class="btn btn-accent btn-sm">Kategorileri Yönet</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-header">Slider Görselleri</div>
+      <div class="card-body">
+        <p>Anasayfa slider görsellerini hızlıca değiştirin.</p>
+        <a href="/admin/slider" class="btn btn-accent btn-sm">Slider'ı Yönet</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-5 border-0 shadow-sm">
+  <div class="card-header">Panel Nasıl Kullanılır?</div>
   <div class="card-body">
-    Buraya sayfaya özel içerik gelecek.
+    <ol class="mb-0">
+      <li>Sol menüden yönetmek istediğiniz alanı seçin.</li>
+      <li>Kategorileri oluşturup ardından hizmetlerinizi ekleyin.</li>
+      <li>Hizmet içeriklerini başlık, açıklama ve görsellerle doldurun.</li>
+      <li>Slider görsellerini güncelleyerek anasayfayı canlı tutun.</li>
+      <li>Yaptığınız değişiklikleri site üzerinde kontrol edin.</li>
+    </ol>
   </div>
 </div>
 {% endblock body %}

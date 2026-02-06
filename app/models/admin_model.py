@@ -419,3 +419,39 @@ class Services:
         finally:
             if cursor:
                 cursor.close()
+
+    def get_random_with_category(self, limit=4, exclude_id=None):
+        cursor = None
+        try:
+            cursor = self.db.connection.cursor()
+
+            base_query = """
+            SELECT s.*, c.slug AS category_slug
+            FROM services s
+            JOIN categories c ON s.category_id = c.id
+            WHERE c.category_type = 'service'
+            """
+            params = []
+
+            if exclude_id:
+                base_query += " AND s.id != %s"
+                params.append(exclude_id)
+
+            base_query += " ORDER BY RAND() LIMIT %s"
+            params.append(limit)
+
+            result = cursor.execute(base_query, tuple(params))
+
+            if result > 0:
+                datas = cursor.fetchall()
+                return True, datas
+
+            return True, []
+
+        except Exception as e:
+            save_error(f"Services.get_random_with_category(): {str(e)}")
+            return False, "Beklenmedik bir hata oluştu."
+
+        finally:
+            if cursor:
+                cursor.close()

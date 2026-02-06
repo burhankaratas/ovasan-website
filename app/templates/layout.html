@@ -28,7 +28,7 @@
       rel="stylesheet">
 
     <!-- CSS Links -->
-    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
     {% block head %}
 
@@ -68,7 +68,7 @@
   <body>
     <div class="page-loader" id="pageLoader" aria-hidden="true">
       <img
-        src="../static/img/main/mainlogo.png"
+        src="{{ url_for('static', filename='img/main/mainlogo.png') }}"
         alt="Ovasan logo"
         class="page-loader__logo" />
     </div>

@@ -58,22 +58,28 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <h5 style="font-weight: bolder; font-size: 36px;">Diğer Hizmet
-                Kategorileri</h5>
+            <span style="font-weight: 500; font-size: 14px; color: #44444480;">PROJE</span><img src="../../static/img/main/rediv.png" alt="yan çizgi kırmızı" class="img-fluid" style="margin-left: 5px;">
             <br>
-            <div class="list-group" style="border-radius: 30px;">
-                <a href="#"
+            <span style="font-weight: 800; color: #0F172A; font-size: 36px;">HİZMETLERİ</span>
+
+            <br><br>
+            <div class="list-group" style="border-radius: 20px;">
+                <div class="list-group-item"
+                    style="background-color: red; color: white; font-weight: bolder; padding: 16px 20px;">
+                    Hizmetlerimiz
+                </div>
+                {% if other_services == [] %}
+                <div class="list-group-item" style="padding: 16px 20px;">Henüz başka hizmet bulunmamaktadır.</div>
+                {% else %}
+                {% for item in other_services %}
+                <a href="/h/{{item.category_slug}}/{{item.slug}}"
                     class="list-group-item list-group-item-action"
-                    style="background-color: red; color: white; font-weight: bolder;">
-                    Cras justo odio
+                    style="padding: 16px 20px;">
+                    {{item.title}}
+                    <i class="bi bi-arrow-up-right" style="float: right; opacity: 0.7;"></i>
                 </a>
-                <a href="#"
-                    class="list-group-item list-group-item-action">Dapibus ac
-                    facilisis in</a>
-                <a href="#" class="list-group-item list-group-item-action">Morbi
-                    leo risus</a>
-                <a href="#" class="list-group-item list-group-item-action">Porta
-                    ac consectetur ac</a>
+                {% endfor %}
+                {% endif %}
             </div>
             <br><br>
         </div>

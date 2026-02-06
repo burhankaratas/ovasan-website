@@ -53,8 +53,20 @@ def service_categories_type(service_category, service):
     if not status:
         flash(msgordata, "danger")
         return redirect(url_for("main.services", category_slug = service_category)) 
+
+    random_status, random_services = service_model.get_random_with_category(
+        limit=4,
+        exclude_id=msgordata.get("id")
+    )
+    if not random_status:
+        random_services = []
     
-    return render_template("service.html", data = msgordata, service_category = service_category)
+    return render_template(
+        "service.html",
+        data=msgordata,
+        service_category=service_category,
+        other_services=random_services
+    )
 
 @main.route("/projeler")
 def project_categories():
