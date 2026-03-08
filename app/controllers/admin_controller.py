@@ -41,6 +41,7 @@ def admin_index():
     return render_template("admin/index.html")
 
 @admin.route('/slider', methods=['GET', 'POST'])
+@login_required
 def slider_panel():
     if request.method == "GET":
          return render_template('admin/slider.html')
