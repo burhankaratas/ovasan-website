@@ -171,6 +171,34 @@
         margin-left: 8px;
     }
 
+    .pd-year-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #f0fdf4;
+        color: #16a34a;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+        margin-left: 8px;
+    }
+
+    .pd-power-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #fefce8;
+        color: #ca8a04;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+        margin-left: 8px;
+    }
+
     .pd-content-desc {
         font-size: 14px;
         color: #555;
@@ -350,6 +378,16 @@
                 <span class="pd-location-badge">
                     <i class="bi bi-geo-alt-fill"></i> {{ project.location }}
                 </span>
+                {% if project.year %}
+                <span class="pd-year-badge">
+                    <i class="bi bi-calendar3"></i> {{ project.year }}
+                </span>
+                {% endif %}
+                {% if project.power %}
+                <span class="pd-power-badge">
+                    <i class="bi bi-lightning-fill"></i> {{ project.power }}
+                </span>
+                {% endif %}
             </div>
 
             <h2 class="pd-content-title">
@@ -362,6 +400,14 @@
             <p class="pd-content-desc">{{ project.description }}</p>
 
             <div style="margin-top: 28px;">
+                {% if project.services %}
+                    {% for service in project.services %}
+                    <div class="pd-feature-item">
+                        <span class="pd-feature-icon"><i class="bi bi-check2"></i></span>
+                        {{ service }}
+                    </div>
+                    {% endfor %}
+                {% else %}
                 <div class="pd-feature-item">
                     <span class="pd-feature-icon"><i class="bi bi-check2"></i></span>
                     AG ve OG Elektrik Tesisat Uygulamaları
@@ -378,6 +424,7 @@
                     <span class="pd-feature-icon"><i class="bi bi-check2"></i></span>
                     Bakım, Ölçüm ve İşletme Müşavirliği
                 </div>
+                {% endif %}
             </div>
 
             <a href="/contact" class="btn btn-danger mt-3" style="border-radius:8px; font-weight:600; font-size:13px;">
