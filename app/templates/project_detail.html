@@ -1,0 +1,476 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>{{ project.full_name }} - Ovasan Mühendislik</title>
+{% endblock head %}
+
+{% block body_ortak %}
+<style>
+    .ortak {
+        background-image: url(../static/img/main/service_background2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bck_blck {
+        background-color: rgba(0, 0, 0, 0.72) !important;
+        color: white;
+    }
+
+    .pd-hero-label {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    .pd-hero-title {
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 1.1;
+        color: #ffffff;
+    }
+
+    .pd-hero-title span {
+        font-weight: 300;
+    }
+
+    .pd-hero-desc {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.75;
+    }
+</style>
+
+<div class="bck_blck">
+    <div class="container">
+        <div class="row align-items-center" style="padding: 90px 0 60px 0;">
+            <div class="col-lg-6">
+                <div class="pd-hero-label">
+                    <i class="bi bi-gear-fill" style="color: #d82b2b; margin-right: 6px;"></i>
+                    ENDÜSTRİYEL PROJELER &nbsp;—&nbsp; {{ project.sector | upper }}
+                </div>
+                <div class="pd-hero-title mt-3">
+                    <span>ENDÜSTRİYEL TESİS</span><br>
+                    ELEKTRİK PROJELERİ
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <p class="pd-hero-desc">
+                    Fabrika, üretim tesisi ve sanayi yapılarında gerçekleştirdiğimiz
+                    anahtar teslim elektrik altyapı projelerimizi inceleyin. AG, OG,
+                    zayıf akım ve otomasyon çözümlerinde onlarca tamamlanmış projeyle
+                    tecrübemizi kanıtladık.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body_ortak %}
+
+{% block body %}
+<style>
+    /* ─── Sol proje listesi ─── */
+    .pd-list-panel {
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        overflow: hidden;
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+    .pd-list-panel::-webkit-scrollbar { width: 4px; }
+    .pd-list-panel::-webkit-scrollbar-track { background: #f1f1f1; }
+    .pd-list-panel::-webkit-scrollbar-thumb { background: #d82b2b; border-radius: 4px; }
+
+    .pd-list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 18px;
+        border-bottom: 1px solid #e5e7eb;
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 600;
+        font-size: 12.5px;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .pd-list-item:last-child { border-bottom: none; }
+
+    .pd-list-item:hover,
+    .pd-list-item.is-active {
+        background: #d82b2b;
+        color: #ffffff;
+    }
+
+    .pd-list-item:hover .pd-list-location,
+    .pd-list-item.is-active .pd-list-location {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .pd-list-item:hover .pd-list-arrow,
+    .pd-list-item.is-active .pd-list-arrow {
+        color: #ffffff;
+    }
+
+    .pd-list-location {
+        font-weight: 400;
+        color: #888;
+        font-size: 11px;
+        margin-top: 2px;
+    }
+
+    .pd-list-arrow {
+        color: #ccc;
+        font-size: 14px;
+        flex-shrink: 0;
+        margin-left: 8px;
+        transition: color 0.2s ease;
+    }
+
+    /* ─── Orta içerik ─── */
+    .pd-content-title {
+        font-size: 36px;
+        font-weight: 400;
+        color: #1a1a1a;
+        line-height: 1.2;
+    }
+
+    .pd-content-title strong {
+        font-weight: 800;
+    }
+
+    .pd-sector-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #f1f5f9;
+        color: #475569;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .pd-location-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff1f1;
+        color: #d82b2b;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+        margin-left: 8px;
+    }
+
+    .pd-content-desc {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.85;
+        margin-top: 16px;
+    }
+
+    .pd-feature-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        font-size: 14px;
+        color: #222;
+        font-weight: 500;
+    }
+
+    .pd-feature-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid #1a6fd4;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a6fd4;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+
+    /* ─── Sağ galeri ─── */
+    .pd-main-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 18px;
+        display: block;
+    }
+
+    .pd-thumb-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .pd-thumb-img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+        border: 2px solid transparent;
+    }
+
+    .pd-thumb-img:hover {
+        transform: scale(1.04);
+        opacity: 0.9;
+        border-color: #d82b2b;
+    }
+
+    .pd-no-image {
+        width: 100%;
+        height: 300px;
+        background: #f1f5f9;
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+    /* ─── Lightbox ─── */
+    .pd-lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.88);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pd-lightbox.open {
+        display: flex;
+    }
+
+    .pd-lightbox img {
+        max-width: 90vw;
+        max-height: 85vh;
+        border-radius: 12px;
+        object-fit: contain;
+    }
+
+    .pd-lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        font-size: 36px;
+        color: white;
+        cursor: pointer;
+        line-height: 1;
+        background: none;
+        border: none;
+    }
+
+    /* ─── CTA bölümü ─── */
+    .pd-cta {
+        background: #0f172a;
+        padding: 70px 0 60px 0;
+        margin-top: 70px;
+    }
+
+    .pd-cta-title {
+        font-size: 34px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .pd-cta-subtitle {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 12px;
+        max-width: 600px;
+    }
+
+    .pd-cta-badge {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: #d82b2b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 28px;
+        flex-shrink: 0;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .pd-cta-badge:hover {
+        background: #b91c1c;
+        transform: scale(1.07);
+        color: white;
+    }
+</style>
+
+<div class="container" style="padding-top: 60px; padding-bottom: 20px;">
+    <div class="row g-4 align-items-start">
+
+        <!-- Sol: Proje listesi -->
+        <div class="col-lg-3">
+            <div class="pd-list-panel">
+                {% for p_slug, p_name, p_loc in all_projects %}
+                <a href="{{ url_for('main.project_detail', slug=p_slug) }}"
+                   class="pd-list-item {% if p_slug == slug %}is-active{% endif %}">
+                    <div>
+                        {{ p_name }}
+                        <div class="pd-list-location">{{ p_loc }}</div>
+                    </div>
+                    <i class="bi bi-arrow-right pd-list-arrow"></i>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Orta: Proje içeriği -->
+        <div class="col-lg-5">
+            <div>
+                <span class="pd-sector-badge">
+                    <i class="bi bi-building"></i> {{ project.sector }}
+                </span>
+                <span class="pd-location-badge">
+                    <i class="bi bi-geo-alt-fill"></i> {{ project.location }}
+                </span>
+            </div>
+
+            <h2 class="pd-content-title">
+                {{ project.full_name.split()[0] }}
+                {% if project.full_name.split()|length > 1 %}
+                <strong>{{ project.full_name.split()[1:] | join(' ') }}</strong>
+                {% endif %}
+            </h2>
+
+            <p class="pd-content-desc">{{ project.description }}</p>
+
+            <div style="margin-top: 28px;">
+                <div class="pd-feature-item">
+                    <span class="pd-feature-icon"><i class="bi bi-check2"></i></span>
+                    AG ve OG Elektrik Tesisat Uygulamaları
+                </div>
+                <div class="pd-feature-item">
+                    <span class="pd-feature-icon"><i class="bi bi-check2"></i></span>
+                    Trafo Merkezi ve Köşk Kurulumları
+                </div>
+                <div class="pd-feature-item">
+                    <span class="pd-feature-icon"><i class="bi bi-check2"></i></span>
+                    Zayıf Akım ve Güvenlik Sistemleri
+                </div>
+                <div class="pd-feature-item">
+                    <span class="pd-feature-icon"><i class="bi bi-check2"></i></span>
+                    Bakım, Ölçüm ve İşletme Müşavirliği
+                </div>
+            </div>
+
+            <a href="/contact" class="btn btn-danger mt-3" style="border-radius:8px; font-weight:600; font-size:13px;">
+                <i class="bi bi-envelope-fill me-2"></i>Bu Proje Hakkında Bilgi Al
+            </a>
+        </div>
+
+        <!-- Sağ: Galeri -->
+        <div class="col-lg-4">
+            {% if images %}
+                {# İlk resim büyük göster #}
+                <img src="{{ url_for('main.docs_media', filepath=project.folder + '/' + images[0]) }}"
+                     alt="{{ project.full_name }}"
+                     class="pd-main-img"
+                     id="mainProjectImg"
+                     data-src="{{ url_for('main.docs_media', filepath=project.folder + '/' + images[0]) }}"
+                     onclick="openLightbox(this.src)">
+
+                {# Kalan resimler küçük thumbnail olarak #}
+                {% if images|length > 1 %}
+                <div class="pd-thumb-grid">
+                    {% for img in images[1:] %}
+                    <img src="{{ url_for('main.docs_media', filepath=project.folder + '/' + img) }}"
+                         alt="{{ project.full_name }} - {{ loop.index + 1 }}"
+                         class="pd-thumb-img"
+                         onclick="setMainAndLightbox(this)">
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% else %}
+                <div class="pd-no-image">
+                    <i class="bi bi-image" style="font-size:40px; margin-bottom:10px;"></i>
+                    Görsel yükleniyor
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+<!-- CTA Bölümü -->
+<div class="pd-cta">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+            <div>
+                <div class="pd-cta-title">Projenizi Birlikte Hayata Geçirelim</div>
+                <p class="pd-cta-subtitle">
+                    Tesisiniz için en uygun mühendislik çözümünü birlikte tasarlayalım.
+                    Teklif almak için bizimle iletişime geçin.
+                </p>
+            </div>
+            <a href="/contact" class="pd-cta-badge">
+                <i class="bi bi-arrow-up-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="pd-lightbox" id="pdLightbox" onclick="closeLightbox(event)">
+    <button class="pd-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img src="" alt="Proje Görseli" id="pdLightboxImg">
+</div>
+
+<script>
+function openLightbox(src) {
+    document.getElementById('pdLightboxImg').src = src;
+    document.getElementById('pdLightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+    if (!e || e.target === document.getElementById('pdLightbox') || e.target.classList.contains('pd-lightbox-close')) {
+        document.getElementById('pdLightbox').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+}
+
+function setMainAndLightbox(el) {
+    const mainImg = document.getElementById('mainProjectImg');
+    if (mainImg) {
+        const prevSrc = mainImg.src;
+        mainImg.src = el.src;
+        el.src = prevSrc;
+    }
+    openLightbox(el.src === document.getElementById('mainProjectImg').src
+        ? document.getElementById('mainProjectImg').src
+        : el.src);
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox({target: document.getElementById('pdLightbox')});
+});
+</script>
+
+{% endblock body %}

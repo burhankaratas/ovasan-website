@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-<title>Projeler - Ovasan Mühendislik</title>
+<title>Projelerimiz - Ovasan Mühendislik</title>
 {% endblock head %}
 
 {% block body_ortak %}
@@ -14,207 +14,433 @@
     }
 
     .bck_blck {
-        background-color: rgba(0, 0, 0, 0.6) !important;
+        background-color: rgba(0, 0, 0, 0.72) !important;
         color: white;
     }
 
-    .projects-hero {
-        padding: 90px 0 40px 0;
-    }
-
-    .projects-title {
-        font-size: 48px;
-        font-weight: 800;
-        letter-spacing: 0.5px;
-        color: #ffffff;
-    }
-
-    .projects-subtitle {
-        font-size: 16px;
-        color: #ffffff;
-        margin-top: 12px;
-    }
-
-    .project-feature-list {
-        margin-top: 28px;
-    }
-
-    .project-feature-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        padding: 14px 16px;
-        border-radius: 12px;
-        background: #f4f4f4;
-        margin-bottom: 12px;
-    }
-
-    .project-feature-item.is-active {
-        background: #d82b2b;
-    }
-
-    .project-feature-no {
-        font-size: 22px;
-        font-weight: 800;
-        line-height: 1;
-        color: #d82b2b;
-    }
-
-    .project-feature-item.is-active .project-feature-no {
-        color: #ffffff;
-    }
-
-    .project-feature-title {
-        font-size: 16px;
-        font-weight: 700;
-        margin: 0 0 4px 0;
-        color: #0f172a;
-    }
-
-    .project-feature-item.is-active .project-feature-title {
-        color: #ffffff;
-    }
-
-    .project-feature-text {
-        font-size: 13px;
-        margin: 0;
-        color: #555555;
-    }
-
-    .project-feature-item.is-active .project-feature-text {
-        color: rgba(255,255,255,0.85);
-    }
-
-    .project-media {
-        background: #ffffff;
-        border-radius: 18px;
-        padding: 10px;
-        box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-    }
-
-    .project-media img {
-        width: 100%;
-        height: 360px;
-        object-fit: cover;
-        border-radius: 14px;
-    }
-
-    .project-media-caption {
-        margin-top: 12px;
-        text-align: center;
-        color: #444;
+    .projects-hero-label {
+        font-size: 12px;
         font-weight: 600;
-        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.75);
     }
 
-    .projects-info {
-        background: #0f1421;
-        color: #d7dbe5;
-        padding: 70px 0 60px 0;
-    }
-
-    .projects-info h3 {
+    .projects-hero-title {
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 1.1;
         color: #ffffff;
-        font-size: 26px;
-        font-weight: 700;
     }
 
-    .projects-info p {
-        font-size: 14px;
-        color: rgba(255,255,255,0.75);
+    .projects-hero-title span {
+        font-weight: 300;
     }
 
-    .projects-badge {
-        width: 60px;
-        height: 60px;
-        border-radius: 999px;
-        background: #d82b2b;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: #ffffff;
-        font-size: 20px;
-        font-weight: 700;
+    .projects-hero-desc {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.75;
     }
 </style>
 
 <div class="bck_blck">
-
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-    
+    <div class="container">
+        <div class="row align-items-center" style="padding: 90px 0 60px 0;">
+            <div class="col-lg-6">
+                <div class="projects-hero-label">
+                    <i class="bi bi-gear-fill" style="color: #d82b2b; margin-right: 6px;"></i>
+                    ENDÜSTRİYEL PROJELER &nbsp;—&nbsp; MÜHENDİSLİK ÇÖZÜMLERİ
+                </div>
+                <div class="projects-hero-title mt-3">
+                    <span>ENDÜSTRİYEL TESİS</span><br>
+                    ELEKTRİK PROJELERİ
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <p class="projects-hero-desc">
+                    Fabrika, üretim tesisi ve sanayi yapılarında gerçekleştirdiğimiz
+                    anahtar teslim elektrik altyapı projelerimizi inceleyin. AG, OG,
+                    zayıf akım ve otomasyon çözümlerinde onlarca tamamlanmış projeyle
+                    tecrübemizi kanıtladık.
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock body_ortak %}
 
 {% block body %}
+<style>
+    /* Sol proje listesi */
+    .projects-list-panel {
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        overflow: hidden;
+        max-height: 520px;
+        overflow-y: auto;
+    }
 
-<div class="container-fluid" style="margin-top: -400px;">
-    <div class="container projects-hero">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="text-uppercase" style="letter-spacing: 2px; font-size: 12px; color: #d82b2b; font-weight: 600;">
-                    Ovasan Mühendislik
-                </div>
-                <div class="projects-title mt-2">Projelerimiz</div>
-                <div class="projects-subtitle">
-                    Endustriyel tesislerden altyapi projelerine kadar,
-                    ihtiyaca ozel tasarlanan guvenilir muhendislik cozumleri.
-                </div>
+    .projects-list-panel::-webkit-scrollbar {
+        width: 4px;
+    }
 
-                <div class="project-feature-list">
-                    <div class="project-feature-item">
-                        <div class="project-feature-no">01</div>
-                        <div>
-                            <div class="project-feature-title">Kesif ve Analiz</div>
-                            <p class="project-feature-text">
-                                Sahaya ozel ihtiyac analizi ve uygulanabilir proje tasarimi.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="project-feature-item is-active">
-                        <div class="project-feature-no">02</div>
-                        <div>
-                            <div class="project-feature-title">Uygulama ve Montaj</div>
-                            <p class="project-feature-text">
-                                Proje disiplini ve is guvenligi ile planli saha uygulamasi.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="project-feature-item">
-                        <div class="project-feature-no">03</div>
-                        <div>
-                            <div class="project-feature-title">Test ve Devreye Alma</div>
-                            <p class="project-feature-text">
-                                Performans, guvenlik ve kalite testleriyle teslim sureci.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="project-feature-item">
-                        <div class="project-feature-no">04</div>
-                        <div>
-                            <div class="project-feature-title">Bakim ve Destek</div>
-                            <p class="project-feature-text">
-                                Surekliligi koruyan periyodik bakim ve teknik destek.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="project-feature-item">
-                        <div class="project-feature-no">05</div>
-                        <div>
-                            <div class="project-feature-title">Kalite ve Mevzuat</div>
-                            <p class="project-feature-text">
-                                Standartlara uygunluk ve dokumantasyon yonetimi.
-                            </p>
-                        </div>
-                    </div>
+    .projects-list-panel::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .projects-list-panel::-webkit-scrollbar-thumb {
+        background: #d82b2b;
+        border-radius: 4px;
+    }
+
+    .projects-list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        border-bottom: 1px solid #e5e7eb;
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 600;
+        font-size: 13px;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .projects-list-item:last-child {
+        border-bottom: none;
+    }
+
+    .projects-list-item:hover,
+    .projects-list-item.is-active {
+        background: #d82b2b;
+        color: #ffffff;
+    }
+
+    .projects-list-item:hover .projects-list-location,
+    .projects-list-item.is-active .projects-list-location {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .projects-list-item:hover .projects-list-arrow,
+    .projects-list-item.is-active .projects-list-arrow {
+        color: #ffffff;
+    }
+
+    .projects-list-location {
+        font-weight: 400;
+        color: #888;
+        font-size: 12px;
+        margin-top: 2px;
+    }
+
+    .projects-list-arrow {
+        color: #ccc;
+        font-size: 15px;
+        flex-shrink: 0;
+        margin-left: 8px;
+        transition: color 0.2s ease;
+    }
+
+    /* Orta içerik */
+    .projects-content-title {
+        font-size: 38px;
+        font-weight: 400;
+        color: #1a1a1a;
+        line-height: 1.2;
+    }
+
+    .projects-content-title strong {
+        font-weight: 800;
+    }
+
+    .projects-content-desc {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.8;
+        margin-top: 16px;
+    }
+
+    .projects-feature-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        font-size: 14px;
+        color: #222;
+        font-weight: 500;
+    }
+
+    .projects-feature-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid #1a6fd4;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a6fd4;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+
+    /* Sağ görsel */
+    .projects-main-img {
+        width: 100%;
+        height: 100%;
+        min-height: 320px;
+        max-height: 520px;
+        object-fit: cover;
+        border-radius: 18px;
+    }
+
+    /* CTA bölümü */
+    .projects-cta {
+        background: #0f172a;
+        padding: 70px 0 60px 0;
+        margin-top: 70px;
+    }
+
+    .projects-cta-title {
+        font-size: 34px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .projects-cta-subtitle {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 12px;
+        max-width: 600px;
+    }
+
+    .projects-cta-badge {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: #d82b2b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 28px;
+        flex-shrink: 0;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .projects-cta-badge:hover {
+        background: #b91c1c;
+        transform: scale(1.07);
+        color: white;
+    }
+</style>
+
+<div class="container" style="padding-top: 60px; padding-bottom: 20px;">
+    <div class="row g-4 align-items-start">
+
+        <!-- Sol: Proje listesi -->
+        <div class="col-lg-3">
+            <div class="projects-list-panel">
+                <a href="/projects/archon" class="projects-list-item">
+                    <div>ARCHON<div class="projects-list-location">Mermerler OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/calor-makine" class="projects-list-item">
+                    <div>CALOR MAKİNE<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/talay-lojistik" class="projects-list-item">
+                    <div>TALAY LOJİSTİK<div class="projects-list-location">GOSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/ermak-beton" class="projects-list-item">
+                    <div>ERMAK BETON<div class="projects-list-location">Makina OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/kroman-celik" class="projects-list-item">
+                    <div>KROMAN ÇELİK<div class="projects-list-location">Makina OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/yeda-cam" class="projects-list-item">
+                    <div>YEDA CAM<div class="projects-list-location">Mermerler OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/skor-petrokimya" class="projects-list-item">
+                    <div>SKOR PETRO KİMYA<div class="projects-list-location">Dilovası OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/alpaz-demir-celik" class="projects-list-item">
+                    <div>ALPAZ DEMİR ÇELİK<div class="projects-list-location">İzmit</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/akyuzlu-dovme" class="projects-list-item">
+                    <div>AKYÜZLÜ DÖVME<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/baran-kablo" class="projects-list-item">
+                    <div>BARAN KABLO<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/birlik-galvaniz" class="projects-list-item">
+                    <div>BİRLİK GALVANİZ<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/bma-teknoloji" class="projects-list-item">
+                    <div>BMA TEKNOLOJİ<div class="projects-list-location">GOSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/dalgakiran-kompresor" class="projects-list-item">
+                    <div>DALGAKIRAN KOMPRESÖR<div class="projects-list-location">Makina OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/dbc-makina" class="projects-list-item">
+                    <div>DBC MAKİNA<div class="projects-list-location">Mermerler OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/demsa-isil-islem" class="projects-list-item">
+                    <div>DEMSA ISIL İŞLEM<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/dulda-merdiven" class="projects-list-item">
+                    <div>DULDA MERDİVEN<div class="projects-list-location">Mermerler OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/elbir-oto" class="projects-list-item">
+                    <div>ELBİR OTO YEDEK PARÇA<div class="projects-list-location">Dilovası OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/gulmelet-galvaniz" class="projects-list-item">
+                    <div>GÜLMELET GALVANİZ<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/hasak-gayrimenkul" class="projects-list-item">
+                    <div>HASAK GAYRİMENKUL<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/hubner" class="projects-list-item">
+                    <div>HUBNER<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/irmak-yapi" class="projects-list-item">
+                    <div>IRMAK YAPI SİSTEMLERİ<div class="projects-list-location">Mermerler OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/isapur-plastik" class="projects-list-item">
+                    <div>İSAPUR PLASTİK<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/itt-global" class="projects-list-item">
+                    <div>İTT GLOBAL LOJİSTİK<div class="projects-list-location">Dilovası OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/mavili-elektronik" class="projects-list-item">
+                    <div>MAVİLİ ELEKTRONİK<div class="projects-list-location">Plastikçiler Sanayi</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/mitra-mermer" class="projects-list-item">
+                    <div>MİTRA MERMER<div class="projects-list-location">Mermerler OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/ortas-celik" class="projects-list-item">
+                    <div>ÖRTAŞ ÇELİK<div class="projects-list-location">Pelitli OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/piranlar" class="projects-list-item">
+                    <div>PİRANLAR<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/prokom-kompansator" class="projects-list-item">
+                    <div>PROKOM KOMPANSATÖR<div class="projects-list-location">Mermerler OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/tekglas-cam" class="projects-list-item">
+                    <div>TEKGLAS CAM<div class="projects-list-location">Gebze OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/uyar-celik" class="projects-list-item">
+                    <div>UYAR ÇELİK<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/valbruna-turkey" class="projects-list-item">
+                    <div>VALBRUNA TURKEY<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/wittmann-group" class="projects-list-item">
+                    <div>WİTTMANN GROUP<div class="projects-list-location">Mermerler OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/yilmaz-makine" class="projects-list-item">
+                    <div>YILMAZ MAKİNE<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/3d-nakliyat" class="projects-list-item">
+                    <div>3D NAK. GÜMRÜKLEME<div class="projects-list-location">Çayırova OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+                <a href="/projects/aris-iskele" class="projects-list-item">
+                    <div>ARİS İSKELE KURULUM<div class="projects-list-location">İMES OSB</div></div>
+                    <i class="bi bi-arrow-right projects-list-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Orta: İçerik -->
+        <div class="col-lg-5">
+            <h2 class="projects-content-title">
+                Anahtar Teslim <strong>Endüstriyel Projeler</strong>
+            </h2>
+            <p class="projects-content-desc">
+                Ovasan Mühendislik olarak sanayi tesislerinin tüm elektrik altyapısını projelendirmeden
+                devreye almaya kadar eksiksiz teslim ediyoruz. Her projede teknik standartlara tam uyum,
+                iş güvenliği ve zamanında teslimat önceliğimizdir. İMES, GOSB, Makina OSB ve çevre sanayi
+                bölgelerinde 35'ten fazla tamamlanmış referans projemiz bulunmaktadır.
+            </p>
+
+            <div style="margin-top: 28px;">
+                <div class="projects-feature-item">
+                    <span class="projects-feature-icon"><i class="bi bi-check2"></i></span>
+                    AG ve OG Elektrik Tesisat Uygulamaları
+                </div>
+                <div class="projects-feature-item">
+                    <span class="projects-feature-icon"><i class="bi bi-check2"></i></span>
+                    Trafo Merkezi ve Köşk Kurulumları
+                </div>
+                <div class="projects-feature-item">
+                    <span class="projects-feature-icon"><i class="bi bi-check2"></i></span>
+                    Zayıf Akım ve Güvenlik Sistemleri
+                </div>
+                <div class="projects-feature-item">
+                    <span class="projects-feature-icon"><i class="bi bi-check2"></i></span>
+                    Bakım, Ölçüm ve İşletme Müşavirliği
                 </div>
             </div>
+        </div>
 
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <div class="project-media">
-                    <img src="../static/img/main/service_robot.jpg" alt="Ovasan projeler">
-                </div>
+        <!-- Sağ: Görsel -->
+        <div class="col-lg-4">
+            <img src="../static/img/main/service_robot.jpg"
+                 alt="Ovasan Mühendislik proje"
+                 class="projects-main-img">
+        </div>
+
+    </div>
+</div>
+
+<!-- CTA Bölümü -->
+<div class="projects-cta">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+            <div>
+                <div class="projects-cta-title">Projenizi Birlikte Hayata Geçirelim</div>
+                <p class="projects-cta-subtitle">
+                    Tesisiniz için en uygun mühendislik çözümünü birlikte tasarlayalım.
+                    Teklif almak için bizimle iletişime geçin.
+                </p>
             </div>
+            <a href="/contact" class="projects-cta-badge">
+                <i class="bi bi-arrow-up-right"></i>
+            </a>
         </div>
     </div>
 </div>
