@@ -44,7 +44,7 @@
         gap: 16px;
         padding: 14px 16px;
         border-radius: 12px;
-        background: rgba(255,255,255,0.07);
+        background: #f4f4f4;
         margin-bottom: 12px;
     }
 
@@ -56,7 +56,7 @@
         font-size: 22px;
         font-weight: 800;
         line-height: 1;
-        color: #ff4b4b;
+        color: #d82b2b;
     }
 
     .project-feature-item.is-active .project-feature-no {
@@ -67,12 +67,21 @@
         font-size: 16px;
         font-weight: 700;
         margin: 0 0 4px 0;
+        color: #0f172a;
+    }
+
+    .project-feature-item.is-active .project-feature-title {
+        color: #ffffff;
     }
 
     .project-feature-text {
         font-size: 13px;
         margin: 0;
-        color: rgba(255,255,255,0.8);
+        color: #555555;
+    }
+
+    .project-feature-item.is-active .project-feature-text {
+        color: rgba(255,255,255,0.85);
     }
 
     .project-media {
@@ -128,7 +137,7 @@
     }
 </style>
 
-<div class="bck_blck" style="background: linear-gradient(to bottom, rgba(0,0,0,0.6) 60%, #0f172a 100%);">
+<div class="bck_blck">
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -138,7 +147,7 @@
 
 {% block body %}
 
-<div class="container-fluid" style="margin-top: -400px; background: #0f172a; padding-bottom: 70px;">
+<div class="container-fluid" style="margin-top: -400px;">
     <div class="container projects-hero">
         <div class="row align-items-center">
             <div class="col-lg-6">
