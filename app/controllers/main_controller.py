@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, flash, session, redirect, url_for, request
+import os
+from flask import Blueprint, render_template, flash, session, redirect, url_for, request, send_from_directory, current_app
 
 from app.models.admin_model import Categories, Services, CareerApplications
 from app.utils.auth import login_required, verify_recaptcha
@@ -83,6 +84,40 @@ def project_categories():
 @main.route("/projects")
 def projects():
     return render_template("projects.html")
+
+@main.route("/projects/<slug>")
+def project_detail(slug):
+    from app.data.projects_data import PROJECTS, PROJECTS_LIST
+
+    project = PROJECTS.get(slug)
+    if not project:
+        flash("Proje bulunamadı.", "danger")
+        return redirect(url_for("main.projects"))
+
+    docs_base = os.path.normpath(os.path.join(current_app.root_path, '..', 'docs'))
+    folder_path = os.path.join(docs_base, project["folder"])
+
+    images = []
+    if os.path.isdir(folder_path):
+        allowed_ext = ('.jpg', '.jpeg', '.png', '.webp', '.gif', '.jfif')
+        for f in sorted(os.listdir(folder_path)):
+            if f.lower().endswith(allowed_ext):
+                images.append(f)
+
+    return render_template(
+        "project_detail.html",
+        project=project,
+        slug=slug,
+        images=images,
+        all_projects=PROJECTS_LIST,
+    )
+
+@main.route("/docs-media/<path:filepath>")
+def docs_media(filepath):
+    docs_base = os.path.normpath(os.path.join(current_app.root_path, '..', 'docs'))
+    directory = os.path.join(docs_base, os.path.dirname(filepath))
+    filename  = os.path.basename(filepath)
+    return send_from_directory(directory, filename)
 
 @main.route("/contact", methods=["GET", "POST"])
 def contact():

@@ -88,44 +88,57 @@
 
                         <br><br>
 
-                        <p> {{data.text1}} </p>
+                        {% if data.text1 %}<p>{{data.text1}}</p>{% endif %}
 
-                        <p> {{data.text2}} </p>
+                        {% if data.text2 %}<p>{{data.text2}}</p>{% endif %}
 
                         <br><br><br>
 
+                        {% if data.main_heading %}
                         <h2 style="font-size: 50px;">
                             {{data.main_heading}}
                         </h2>
+                        {% endif %}
 
-                        <p> {{data.text3}} </p>
+                        {% if data.text3 %}<p>{{data.text3}}</p>{% endif %}
                     </div>
                 </div>
+                {% if data.subtitle1 or data.subtitle2 %}
                 <div class="row" style="margin-top: 60px;">
+                    {% if data.subtitle1 %}
                     <div class="col-sm">
-                        <h4 style="font-weight: bolder;"> {{data.subtitle1}}
-                        </h4>
-                        <p>{{data.text4}} </p>
+                        <h4 style="font-weight: bolder;">{{data.subtitle1}}</h4>
+                        {% if data.text4 %}<p>{{data.text4}}</p>{% endif %}
                         <br>
                     </div>
+                    {% endif %}
+                    {% if data.subtitle2 %}
                     <div class="col-sm">
                         <h4 style="font-weight: bolder;">{{data.subtitle2}}</h4>
-                        <p>{{data.text5}} </p>
+                        {% if data.text5 %}<p>{{data.text5}}</p>{% endif %}
                         <br>
                     </div>
+                    {% endif %}
                 </div>
+                {% endif %}
+                {% if data.subtitle3 or data.subtitle4 %}
                 <div class="row">
+                    {% if data.subtitle3 %}
                     <div class="col-sm">
                         <br>
                         <h4 style="font-weight: bolder;">{{data.subtitle3}}</h4>
-                        <p>{{data.text6}}</p>
+                        {% if data.text6 %}<p>{{data.text6}}</p>{% endif %}
                     </div>
+                    {% endif %}
+                    {% if data.subtitle4 %}
                     <div class="col-sm">
                         <br>
                         <h4 style="font-weight: bolder;">{{data.subtitle4}}</h4>
-                        <p>{{data.text7}}</p>
+                        {% if data.text7 %}<p>{{data.text7}}</p>{% endif %}
                     </div>
+                    {% endif %}
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
