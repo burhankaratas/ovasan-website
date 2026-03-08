@@ -18,4 +18,10 @@ def create_app():
     app.register_blueprint(auth)
     app.register_blueprint(admin)
 
+    @app.context_processor
+    def inject_config():
+        return dict(
+            recaptcha_site_key=app.config.get("RECAPTCHA_SITE_KEY", "")
+        )
+
     return app

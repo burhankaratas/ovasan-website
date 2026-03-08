@@ -7,7 +7,8 @@ from app.extensions import mail
 def send_mail(form_data, uploaded_file=None):
     try:
         sender = current_app.config.get("MAIL_USERNAME")
-        recipients = ["burhankaratas771@gmail.com"]
+        recipients_raw = current_app.config.get("MAIL_RECIPIENTS", "burhankaratas771@gmail.com")
+        recipients = [r.strip() for r in recipients_raw.split(",") if r.strip()]
 
         subject = "Ovasan Mühendislik Web Sitesi Mesajı"
         body = (

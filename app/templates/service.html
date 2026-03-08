@@ -7,7 +7,7 @@
 {% block body_ortak %}
 <style>
     .ortak {
-    background-image: url(../../static/img/main/service_background2.jpg);
+    background-image: url("{{ url_for('static', filename='img/main/service_background2.jpg') }}");
     background-repeat: no-repeat;
     background-size: cover;
     }

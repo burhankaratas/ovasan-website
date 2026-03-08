@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../static/css/footer.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
 <div class="container-fluid footer-main">
     <div class="row">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-sm" style="text-align: end;">
                         <br><br>
-                        <img src="../../static/img/main/mainlogo.png"
+                        <img src="{{ url_for('static', filename='img/main/mainlogo.png') }}"
                             alt="logo footer" style="width: 200px;">
                     </div>
                 </div>

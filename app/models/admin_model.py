@@ -9,6 +9,38 @@ class Contact:
     def __init__(self):
         self.db = mysql
 
+    def count(self):
+        cursor = None
+        try:
+            cursor = self.db.connection.cursor()
+            cursor.execute("SELECT COUNT(*) AS total FROM contact")
+            result = cursor.fetchone()
+            return result["total"] if result else 0
+        except Exception as e:
+            save_error(f"Contact.count: {str(e)}")
+            return 0
+        finally:
+            if cursor:
+                cursor.close()
+
+    def get_all(self, page=1, per_page=5):
+        cursor = None
+        try:
+            offset = (page - 1) * per_page
+            cursor = self.db.connection.cursor()
+            cursor.execute(
+                "SELECT * FROM contact ORDER BY id DESC LIMIT %s OFFSET %s",
+                (per_page, offset)
+            )
+            rows = cursor.fetchall()
+            return rows if rows else []
+        except Exception as e:
+            save_error(f"Contact.get_all: {str(e)}")
+            return []
+        finally:
+            if cursor:
+                cursor.close()
+
     def create(self, company_name, name, email, phone, service, message):
         """
         Yeni mesaj ekler.
@@ -208,6 +240,8 @@ class Categories:
             if cursor.rowcount > 0:
                 self.db.connection.commit()
                 return True, "Kategori silindi."
+
+            return False, "Kategori silinemedi."
 
         except Exception as e:
             save_error(f"Categories.delete(): {str(e)}")

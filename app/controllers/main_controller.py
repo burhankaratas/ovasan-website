@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint, render_template, flash, session, redirect, url_for, request, send_from_directory, current_app
 
-from app.models.admin_model import Categories, Services, CareerApplications
+from app.models.admin_model import Categories, Services, CareerApplications, Contact
 from app.utils.auth import login_required, verify_recaptcha
 
 main = Blueprint('main', __name__)
@@ -142,6 +142,17 @@ def contact():
             from app.utils.mail import send_mail
         except Exception:
             send_mail = None
+
+        # Mesajı DB'ye kaydet
+        contact_model = Contact()
+        contact_model.create(
+            form_data["kurum_name"],
+            form_data["name"],
+            form_data["email"],
+            form_data["phone"],
+            form_data["service"],
+            form_data["message"],
+        )
 
         if send_mail and send_mail(form_data, uploaded_file):
             flash("Mesajınız başarıyla gönderildi.", "success")

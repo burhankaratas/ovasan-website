@@ -48,10 +48,10 @@ def slider_panel():
     
     elif request.method == 'POST':
         try:
-            slider_number = int(request.form['slider_number'])
-            file = request.files['file']
+            slider_number = request.form.get("slider_number", type=int)
+            file = request.files.get("file")
 
-            if slider_number not in range(1, 6):
+            if slider_number is None or slider_number not in range(1, 6):
                 flash("Slider numarası 1 ile 5 arasında olmalı.", "danger")
                 return redirect(url_for('admin.slider_panel'))
 
@@ -145,7 +145,10 @@ def admin_categories_create():
         slug = request.form.get("slug")
         category_type = request.form.get("category_type")
 
-        image = request.files["image"]
+        image = request.files.get("image")
+        if not image:
+            flash("Lütfen bir resim dosyası seçin.", "danger")
+            return redirect(url_for("admin.admin_categories"))
 
         image_status, file_name = save_file(image, "categories")
 

@@ -1,6 +1,7 @@
 from flask import session, flash, redirect, url_for
 from dotenv import load_dotenv
 from functools import wraps
+from werkzeug.security import check_password_hash
 import requests
 import os
 
@@ -44,9 +45,18 @@ def user_authentication(username, password):
     real_username = os.getenv("PANEL_USERNAME")
     real_password = os.getenv("PANEL_PASSWORD")
 
-    if real_username != username or real_password != password:
+    if real_username != username:
         return False, "Eksik veya yanlış giriş bilgileri girdiniz. Bilgilerinizi kontrol edip tekrar deneyiniz."
-    
+
+    # .env'de hash saklıyorsa check_password_hash, düz metin ise direkt karşılaştır
+    password_match = (
+        check_password_hash(real_password, password)
+        if real_password and real_password.startswith(("pbkdf2:", "scrypt:", "$2b$"))
+        else real_password == password
+    )
+    if not password_match:
+        return False, "Eksik veya yanlış giriş bilgileri girdiniz. Bilgilerinizi kontrol edip tekrar deneyiniz."
+
     return True, "Başarılı giriş"
 
 def login_required(f):
