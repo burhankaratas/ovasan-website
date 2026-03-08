@@ -88,17 +88,19 @@
 
                         <br><br>
 
-                        <p> {{data.text1}} </p>
+                        {% if data.text1 %}<p>{{data.text1}}</p>{% endif %}
 
-                        <p> {{data.text2}} </p>
+                        {% if data.text2 %}<p>{{data.text2}}</p>{% endif %}
 
                         <br><br><br>
 
+                        {% if data.main_heading %}
                         <h2 style="font-size: 50px;">
                             {{data.main_heading}}
                         </h2>
+                        {% endif %}
 
-                        <p> {{data.text3}} </p>
+                        {% if data.text3 %}<p>{{data.text3}}</p>{% endif %}
                     </div>
                 </div>
                 {% if data.subtitle1 or data.subtitle2 %}
