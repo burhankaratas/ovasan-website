@@ -18,5 +18,5 @@ class Config:
     MAIL_USE_TLS  = False
     MAIL_USE_SSL  = True
 
-    RECAPTCHA_SITE_KEY = os.getenv("RECAPTCHA_SITE_KEY", "6LfkEwYsAAAAAM5XI17sM2N9cxUzPKIdEu4lIl-7")
+    RECAPTCHA_SITE_KEY = os.getenv("RECAPTCHA_SITE_KEY", "")
     MAIL_RECIPIENTS    = os.getenv("MAIL_RECIPIENTS", "burhankaratas771@gmail.com")

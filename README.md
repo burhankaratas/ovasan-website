@@ -1,77 +1,82 @@
 # Ovasan Website
 
-Ovasan Mühendislik web sitesi için Flask tabanlı bir uygulama. Ana sayfa, hakkımızda, hizmetler, projeler ve iletişim formu; ayrıca yönetim paneli ile içerik yönetimini destekler.
+> Ovasan Mühendislik için geliştirilmiş kurumsal web sitesi ve içerik yönetim paneli.
 
-**Öne çıkanlar**
-- Flask Blueprint yapısı (main, auth, admin)
-- MySQL veritabanı entegrasyonu
-- İletişim formu + e-posta gönderimi (Flask-Mail)
-- reCAPTCHA doğrulaması
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-3.1-000000?logo=flask&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white)
+![Lisans](https://img.shields.io/badge/license-MIT-green)
 
-## Gereksinimler
-- Python 3.10+ (önerilen)
-- MySQL 5.7+ / 8+
+Kurumsal tanıtım sitesi: ana sayfa, hakkımızda, hizmetler, projeler ve iletişim.
+İçerikler yönetim panelinden güncellenebilir; iletişim formu reCAPTCHA ile
+doğrulanıp e-posta olarak iletilir.
 
-## Kurulum
-1. Sanal ortam oluşturun ve aktif edin
-```bash
-python -m venv venv
-source venv/bin/activate
-```
+## Özellikler
 
-2. Bağımlılıkları kurun
-```bash
-pip install -r requirements.txt
-```
+- **Kurumsal sayfalar** — ana sayfa, hakkımızda, hizmetler, projeler, kariyer, iletişim.
+- **Hizmet & proje katalogları** — kategori listeleri ve detay sayfaları.
+- **Yönetim paneli** — `/login` üzerinden giriş; içerik yönetimi.
+- **İletişim formu** — reCAPTCHA doğrulaması + dosya eki ve boyut kontrolü.
+- **E-posta gönderimi** — Flask-Mail ile SMTP üzerinden iletim.
+- **Katmanlı mimari** — Flask Blueprint (main, auth, admin).
 
-3. Veritabanı oluşturun
-```sql
-CREATE DATABASE ovasan;
-```
+## Teknoloji Yığını
 
-4. Ortam değişkenlerini ayarlayın (`.env` dosyası oluşturun)
-```ini
-SECRET_KEY=your_secret_key
-
-PANEL_USERNAME=admin
-PANEL_PASSWORD=strong_password
-
-MAIL_USERNAME=your_gmail_address
-MAIL_PASSWORD=your_gmail_app_password
-
-CAPTCHA_SECRET_KEY=your_recaptcha_secret_key
-```
-
-Notlar:
-- Gmail kullanıyorsanız uygulama şifresi gerekir.
-- reCAPTCHA anahtarları Google reCAPTCHA panelinden alınır.
-
-## Çalıştırma
-```bash
-python run.py
-```
-Uygulama varsayılan olarak `http://localhost:5000` üzerinde çalışır.
+| Katman | Kullanılan |
+|---|---|
+| Backend | Python 3.12, Flask 3.1 |
+| Veritabanı | MySQL, `flask-mysqldb` |
+| E-posta | Flask-Mail (SMTP) |
+| Güvenlik | reCAPTCHA, `.env` tabanlı kimlik bilgileri |
+| Ön yüz | HTML, CSS, Bootstrap |
 
 ## Dizin Yapısı
-- `app/controllers` route ve iş mantığı
-- `app/models` veritabanı işlemleri
-- `app/templates` HTML şablonları
-- `app/utils` yardımcı fonksiyonlar (auth, mail vb.)
-- `app/extensions.py` üçüncü parti eklentiler (MySQL, Mail)
+
+```
+ovasan-website/
+├── run.py                     # Giriş noktası
+├── config.py                  # Yapılandırma (.env tabanlı)
+├── requirements.txt
+└── app/
+    ├── __init__.py            # Uygulama fabrikası
+    ├── extensions.py          # MySQL, Mail eklentileri
+    ├── controllers/           # main / auth / admin
+    ├── models/                # Veritabanı işlemleri
+    ├── data/                  # Statik içerik verileri
+    ├── utils/                 # auth, mail, admin, log yardımcıları
+    ├── templates/             # Jinja2 şablonları
+    └── static/                # CSS, JS, görseller
+```
+
+## Kurulum
+
+Gereksinimler: **Python 3.10+** ve **MySQL 5.7+/8+**.
+
+```bash
+python -m venv venv
+source venv/bin/activate      # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+mysql -u root -p -e "CREATE DATABASE ovasan CHARACTER SET utf8mb4;"
+
+cp .env.example .env          # değerleri düzenleyin
+python run.py
+```
+
+Uygulama `http://localhost:5000` üzerinde açılır.
+
+## Ortam Değişkenleri
+
+`.env` içinde: `MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DB`,
+`SECRET_KEY`, `PANEL_USERNAME`, `PANEL_PASSWORD`, `MAIL_USERNAME`,
+`MAIL_PASSWORD`, `MAIL_RECIPIENTS`, `RECAPTCHA_SITE_KEY`.
+
+> Gmail kullanıyorsanız normal şifre yerine **uygulama şifresi** oluşturun.
 
 ## Yönetim Paneli
-`/login` üzerinden giriş yapılır. Kimlik bilgileri `.env` içindeki `PANEL_USERNAME` ve `PANEL_PASSWORD` ile kontrol edilir.
 
-## İletişim Formu
-`/contact` sayfasındaki form gönderimleri:
-- reCAPTCHA doğrulamasından geçer
-- Mail ile belirtilen alıcıya iletilir
-- Dosya eklerini ve boyut sınırlamasını kontrol eder
+`/login` adresinden `.env` içindeki `PANEL_USERNAME` / `PANEL_PASSWORD` ile giriş yapılır.
 
-## Geliştirme Notları
-- MySQL ayarları `config.py` içinde yapılandırılır.
-- Mail ayarları `config.py` + `.env` üzerinden yönetilir.
+## Lisans
 
----
-
-Herhangi bir geliştirme önerin varsa memnuniyetle yardımcı olurum.
+MIT — bkz. [LICENSE](LICENSE).
